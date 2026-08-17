@@ -25,6 +25,7 @@
       --color-green: #25d366;
       --color-green-hover: #1eba59;
       --color-gold: #d4a533;
+      --color-orange: #e8872a;
       --color-blue-accent: #2980b9;
       --color-bg-light: #edf2f7;
       --color-bg-white: #ffffff;
@@ -208,7 +209,6 @@
       transition: var(--transition);
     }
 
-    /* Barra de pesquisa no header */
     .search-bar {
       display: flex;
       align-items: center;
@@ -922,6 +922,615 @@
     }
 
     /* ==========================================================================
+       14. PÁGINA DE DETALHES DO DESTINO
+       ========================================================================== */
+    .destination-detail {
+      display: none;
+      margin-top: var(--header-height);
+    }
+
+    .destination-detail.active {
+      display: block;
+    }
+
+    .main-content.hidden {
+      display: none;
+    }
+
+    /* Botão voltar */
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 25px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--transition);
+      border: 1px solid rgba(255,255,255,0.3);
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+    }
+
+    .detail-back:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* Hero do destino */
+    .detail-hero {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--color-primary-dark);
+    }
+
+    .detail-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(20,45,59,0.85), rgba(27,58,75,0.6));
+    }
+
+    .detail-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 20px;
+      width: 100%;
+    }
+
+    .detail-hero-label {
+      display: inline-block;
+      background: var(--color-gold);
+      color: var(--color-primary-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .detail-hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--color-text-light);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .detail-hero-content .detail-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .btn-specialist {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-green);
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 16px 35px;
+      border-radius: 50px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-specialist:hover {
+      background: var(--color-green-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Conforto e estrutura */
+    .detail-comfort {
+      padding: 80px 0;
+      background: var(--color-bg-white);
+    }
+
+    .detail-comfort .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .detail-comfort-text h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .detail-comfort-text p {
+      font-size: 1rem;
+      color: var(--color-text-body);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .detail-comfort-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--color-bg-light);
+      min-height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-color: #3a6b5c;
+    }
+
+    /* Citação do destino */
+    .detail-quote {
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--color-primary);
+    }
+
+    .detail-quote blockquote {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Feature cards */
+    .detail-features {
+      padding: 80px 0;
+      background: var(--color-bg-light);
+    }
+
+    .detail-features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .detail-feature-card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--color-shadow);
+      transition: transform var(--transition);
+    }
+
+    .detail-feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .detail-feature-card-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      background-color: #3a6b5c;
+    }
+
+    .detail-feature-card-body {
+      padding: 25px 20px;
+    }
+
+    .detail-feature-card-body .feature-icon {
+      width: 45px;
+      height: 45px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .detail-feature-card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-feature-card-body p {
+      font-size: 0.9rem;
+      color: var(--color-text-body);
+      line-height: 1.6;
+    }
+
+    /* Seção gigantes */
+    .detail-giants {
+      padding: 80px 0;
+      background: var(--color-primary);
+      color: var(--color-text-light);
+    }
+
+    .detail-giants .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .detail-giants-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+
+    .detail-giants-text .giants-quote {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      border-left: 3px solid var(--color-orange);
+      padding-left: 20px;
+      font-style: italic;
+    }
+
+    .detail-giants-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-color: #2c5a3f;
+    }
+
+    /* Seção espécies */
+    .detail-species {
+      padding: 80px 0;
+      background: var(--color-primary-dark);
+      color: var(--color-text-light);
+    }
+
+    .detail-species .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .detail-species-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .species-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .species-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--color-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .species-item h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .species-item p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    .detail-species-gallery {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .species-gallery-slider {
+      display: flex;
+      height: 100%;
+      min-height: 400px;
+      transition: transform 0.5s ease;
+    }
+
+    .species-gallery-slide {
+      min-width: 100%;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-color: #3a6b5c;
+      position: relative;
+    }
+
+    .species-gallery-slide .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .species-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 3;
+      transition: background var(--transition);
+    }
+
+    .species-gallery-arrow:hover {
+      background: rgba(255,255,255,0.35);
+    }
+
+    .species-gallery-arrow.prev { left: 10px; }
+    .species-gallery-arrow.next { right: 10px; }
+
+    /* Pacote All Inclusive */
+    .detail-package {
+      padding: 80px 0;
+      background: var(--color-bg-white);
+    }
+
+    .detail-package .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .package-card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius);
+      padding: 35px;
+      box-shadow: 0 4px 20px var(--color-shadow);
+      position: relative;
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .package-included::before {
+      background: var(--color-green);
+    }
+
+    .package-excluded::before {
+      background: var(--color-orange);
+    }
+
+    .package-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 25px;
+    }
+
+    .package-card h3 i {
+      font-size: 1.3rem;
+    }
+
+    .package-included h3 i {
+      color: var(--color-green);
+    }
+
+    .package-excluded h3 i {
+      color: var(--color-orange);
+    }
+
+    .package-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: var(--color-text-body);
+    }
+
+    .package-card ul li i {
+      margin-top: 4px;
+      font-size: 0.85rem;
+    }
+
+    .package-included ul li i {
+      color: var(--color-green);
+    }
+
+    .package-excluded ul li i {
+      color: var(--color-orange);
+    }
+
+    .package-excluded .package-note {
+      font-size: 0.9rem;
+      color: var(--color-text-body);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .package-info-box {
+      margin-top: 20px;
+      padding: 15px 20px;
+      background: var(--color-bg-light);
+      border-radius: var(--radius);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .package-info-box i {
+      color: var(--color-orange);
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .package-info-box p {
+      font-size: 0.88rem;
+      color: var(--color-text-body);
+      line-height: 1.6;
+    }
+
+    /* Informações e Dinâmica */
+    .detail-info {
+      padding: 80px 0;
+      background: var(--color-bg-light);
+    }
+
+    .detail-info .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .info-column h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 25px;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .info-card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 2px 10px var(--color-shadow);
+      border-left: 3px solid var(--color-blue-accent);
+    }
+
+    .info-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card h4 i {
+      color: var(--color-blue-accent);
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-body);
+      line-height: 1.6;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 25px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-blue-accent);
+      border: 2px solid var(--color-bg-light);
+    }
+
+    .timeline-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-blue-accent);
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      font-size: 0.88rem;
+      color: var(--color-text-body);
+      line-height: 1.6;
+    }
+
+    .timeline-note {
+      margin-top: 20px;
+      padding: 15px;
+      background: var(--color-bg-white);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--color-text-body);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .detail-cta {
+      padding: 50px 0;
+      text-align: center;
+      background: var(--color-bg-white);
+    }
+
+    /* ==========================================================================
        12. RESPONSIVO - TABLET
        ========================================================================== */
     @media (max-width: 992px) {
@@ -957,6 +1566,19 @@
       .footer-logo { align-items: center; }
       .footer-contact-item { justify-content: center; }
       .footer-social-icons { justify-content: center; }
+
+      /* Detail page tablet */
+      .detail-hero-content h1 { font-size: 2.5rem; }
+      .detail-comfort .container { grid-template-columns: 1fr; }
+      .detail-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .detail-giants .container { grid-template-columns: 1fr; }
+      .detail-giants-img { min-height: 300px; }
+      .detail-species .container { grid-template-columns: 1fr; }
+      .detail-species-gallery { min-height: 350px; }
+      .species-gallery-slider { min-height: 350px; }
+      .species-gallery-slide { min-height: 350px; }
+      .detail-package .container { grid-template-columns: 1fr; }
+      .detail-info .container { grid-template-columns: 1fr; }
     }
 
     /* ==========================================================================
@@ -1053,6 +1675,31 @@
       .footer { padding: 40px 0 20px; }
 
       .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 15px; right: 15px; }
+
+      /* Detail page mobile */
+      .detail-hero { min-height: 400px; }
+      .detail-hero-content h1 { font-size: 1.8rem; }
+      .detail-hero-content .detail-subtitle { font-size: 1rem; }
+      .detail-back { top: 10px; left: 10px; padding: 8px 18px; font-size: 0.85rem; }
+
+      .detail-comfort { padding: 50px 0; }
+      .detail-comfort-text h2 { font-size: 1.5rem; }
+      .detail-comfort-img { min-height: 250px; }
+
+      .detail-features { padding: 50px 0; }
+      .detail-features-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+      .detail-giants { padding: 50px 0; }
+      .detail-giants-text h2 { font-size: 1.8rem; }
+      .detail-giants-img { min-height: 250px; }
+
+      .detail-species { padding: 50px 0; }
+      .detail-species-gallery { min-height: 280px; }
+      .species-gallery-slider { min-height: 280px; }
+      .species-gallery-slide { min-height: 280px; }
+
+      .detail-package { padding: 50px 0; }
+      .detail-info { padding: 50px 0; }
     }
   </style>
 </head>
@@ -1063,7 +1710,6 @@
        HEADER
        ==================================================================== -->
   <header class="header" id="inicio">
-    <!-- Barra superior com Cadastur e bandeiras -->
     <div class="header-top">
       <div class="cadastur-badge">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -1071,14 +1717,12 @@
           <path d="M8 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/>
         </svg>
         <span class="cadastur-text">Cadastur</span>
-        <!-- Bandeira do Brasil -->
         <svg class="flag-br" width="28" height="20" viewBox="0 0 28 20">
           <rect width="28" height="20" rx="2" fill="#009c3b"/>
           <polygon points="14,2 26,10 14,18 2,10" fill="#ffdf00"/>
           <circle cx="14" cy="10" r="4.5" fill="#002776"/>
           <path d="M9.5,10 Q14,7 18.5,10" stroke="#fff" stroke-width="0.7" fill="none"/>
         </svg>
-        <!-- Bandeira de Santa Catarina -->
         <svg class="flag-sc" width="28" height="20" viewBox="0 0 28 20">
           <rect width="28" height="20" rx="2" fill="#fff"/>
           <rect width="28" height="10" fill="#ed1c24"/>
@@ -1090,19 +1734,15 @@
       </div>
     </div>
 
-    <!-- Logo e navegação -->
     <div class="header-main">
-      <a href="#inicio" class="logo">
+      <a href="#inicio" class="logo" onclick="closeDetail()">
         <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <!-- Lua crescente -->
           <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.5"/>
           <circle cx="68" cy="42" r="32" fill="white"/>
-          <!-- Estrela 8 pontas -->
           <g transform="translate(48, 28)">
             <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
             <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
           </g>
-          <!-- Ondas de reflexo -->
           <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.6"/>
           <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.4"/>
           <path d="M35,104 Q42,101 50,104 Q58,107 65,104 Q72,101 80,104" stroke="#c9bfa0" stroke-width="1" fill="none" opacity="0.3"/>
@@ -1114,11 +1754,11 @@
       </a>
 
       <nav class="nav" id="nav">
-        <a href="#inicio">Início</a>
-        <a href="#roteiros">Nossos Destinos</a>
-        <a href="#quem-somos">Quem Somos</a>
-        <a href="#loja-virtual">Loja Virtual</a>
-        <a href="#contato">Contatos</a>
+        <a href="#inicio" onclick="closeDetail()">Início</a>
+        <a href="#roteiros" onclick="closeDetail()">Nossos Destinos</a>
+        <a href="#quem-somos" onclick="closeDetail()">Quem Somos</a>
+        <a href="#loja-virtual" onclick="closeDetail()">Loja Virtual</a>
+        <a href="#contato" onclick="closeDetail()">Contatos</a>
       </nav>
 
       <div class="search-bar">
@@ -1137,285 +1777,660 @@
   </header>
 
   <!-- ====================================================================
-       HERO / SLIDER
+       CONTEÚDO PRINCIPAL (escondido quando detalhes abrem)
        ==================================================================== -->
-  <section class="hero">
-    <div class="hero-slider" id="heroSlider">
-      <!-- Slide 1 -->
-      <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-fishing.jpg'); background-color: #2c5a3f;">
-        <div class="hero-slide-content">
-          <h1>O Melhor da Pesca Esportiva</h1>
-          <p>Conectando você aos melhores destinos de pesca do Brasil.</p>
+  <div class="main-content" id="mainContent">
+
+    <!-- HERO / SLIDER -->
+    <section class="hero">
+      <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-fishing.jpg'); background-color: #2c5a3f;">
+          <div class="hero-slide-content">
+            <h1>O Melhor da Pesca Esportiva</h1>
+            <p>Conectando você aos melhores destinos de pesca do Brasil.</p>
+          </div>
+        </div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-adventure.jpg'); background-color: #1e4a3a;">
+          <div class="hero-slide-content">
+            <h1>Aventura na Natureza</h1>
+            <p>Expedições exclusivas em rios e lagos preservados.</p>
+          </div>
         </div>
       </div>
-      <!-- Slide 2 -->
-      <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-adventure.jpg'); background-color: #1e4a3a;">
-        <div class="hero-slide-content">
-          <h1>Aventura na Natureza</h1>
-          <p>Expedições exclusivas em rios e lagos preservados.</p>
+
+      <button class="hero-arrow prev" id="heroPrev" aria-label="Slide anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="hero-arrow next" id="heroNext" aria-label="Próximo slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </section>
+
+    <!-- QUEM SOMOS -->
+    <section class="about" id="quem-somos">
+      <div class="container">
+        <div class="about-logo">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+            <circle cx="68" cy="42" r="32" fill="#edf2f7"/>
+            <g transform="translate(48, 28)">
+              <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+              <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+            </g>
+            <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.35"/>
+          </svg>
+        </div>
+
+        <div class="about-content">
+          <h2>Quem Somos</h2>
+          <div class="underline"></div>
+          <p>A <strong>DESTINNO Experience</strong> nasceu para transformar o planejamento da sua pescaria em uma expedição impecável. Nosso foco é conectar pescadores exigentes aos locais mais exclusivos da natureza, eliminando qualquer imprevisto.</p>
+          <p>Acreditamos que a pesca de alto padrão exige três pilares:</p>
+          <ul>
+            <li>Destinos selecionados com rigor</li>
+            <li>Logística completa e sem preocupações</li>
+            <li>Experiências que vão além da pescaria</li>
+          </ul>
+          <p>Com a DESTINNO, a sua única preocupação é pescar. Nós cuidamos de todo o resto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGURO VIAGEM -->
+    <section class="insurance">
+      <div class="container">
+        <div class="insurance-icon">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        <h2>🛡️ Seguro Viagem!</h2>
+        <p>Viaje com mais tranquilidade. A <strong>DESTINNO EXPERIENCE</strong> oferece o melhor caminho para a sua segurança e da sua família.</p>
+        <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Seguro%20Viagem." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          Saiba mais
+        </a>
+      </div>
+    </section>
+
+    <!-- CITAÇÃO -->
+    <section class="quote-section">
+      <div class="wave-icon">〰️</div>
+      <blockquote>
+        "O rio não é apenas um destino, é onde a nossa alma encontra a verdadeira calma e a emoção do desconhecido."
+      </blockquote>
+      <p class="quote-author">— Viva a experiência</p>
+    </section>
+
+    <!-- NOSSOS ROTEIROS -->
+    <section class="itineraries" id="roteiros">
+      <div class="container">
+        <h2>Nossos Destinos</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">Explore as opções cuidadosamente selecionadas para a sua próxima grande aventura.</p>
+
+        <div class="itineraries-grid">
+          <!-- Card 1 - Rio Teles Pires -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-teles-pires.jpg'); background-color: #2c5a3f;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Teles Pires</h3>
+              <p>Um dos destinos mais piscosos do planeta e verdadeiro berço dos Gigantes da Amazônia. Pescaria de alto nível.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('teles-pires')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 2 - Rio Cuiabá -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-cuiaba.jpg'); background-color: #3a7c59;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Cuiabá</h3>
+              <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('rio-cuiaba')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 3 - Rio Roosevelt -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-roosevelt.jpg'); background-color: #1e5a4a;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Roosevelt</h3>
+              <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('rio-roosevelt')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 4 - Baixo Rio Branco -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-branco.jpg'); background-color: #4a7c59;"></div>
+            <div class="itinerary-card-body">
+              <h3>Baixo Rio Branco</h3>
+              <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('baixo-rio-branco')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 5 - Rio Anauá -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-anaua.jpg'); background-color: #2980b9;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Anauá</h3>
+              <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('rio-anaua')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 6 - Em Breve -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-em-breve.jpg'); background-color: #3a6b8c;"></div>
+            <div class="itinerary-card-body">
+              <h3>Em Breve</h3>
+              <p>Fique atento! Estamos preparando mais uma experiência incrível e exclusiva de pescaria de alto padrão para você.</p>
+              <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Quero%20ser%20avisado%20sobre%20novos%20roteiros." class="btn-roteiro secondary" target="_blank" rel="noopener">Quero ser avisado</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>O que nossos clientes comentam</h2>
+
+        <div class="testimonials-wrapper">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Carla Beth</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                </div>
+                <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Vinicius Martelo</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+                </div>
+                <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="testimonial-arrow prev" id="testPrev" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-arrow next" id="testNext" aria-label="Próximo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOJA VIRTUAL -->
+    <section class="store" id="loja-virtual">
+      <div class="container">
+        <h2>Loja Virtual</h2>
+        <div class="section-line"></div>
+        <div class="store-placeholder">
+          <i class="fas fa-store"></i>
+          <h3>Em breve!</h3>
+          <p>Estamos preparando nossa loja virtual com produtos exclusivos para pescadores. Fique ligado!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contato">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+                <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
+                <g transform="translate(48, 28)">
+                  <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+                  <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+                </g>
+                <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
+                <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="brand-name">DESTINNO</span>
+              <span class="brand-sub">Experience</span>
+            </div>
+            <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
+          </div>
+
+          <div class="footer-contact">
+            <h3>CONTATO</h3>
+            <div class="footer-contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
+            </div>
+          </div>
+
+          <div class="footer-social">
+            <h3>SIGA-NOS</h3>
+            <div class="footer-social-icons">
+              <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- fim .main-content -->
+
+  <!-- ====================================================================
+       PÁGINA DE DETALHES - RIO TELES PIRES
+       ==================================================================== -->
+  <div class="destination-detail" id="detail-teles-pires">
+
+    <!-- Hero -->
+    <div class="detail-hero" style="background-image: url('/images/detail-teles-pires-hero.jpg');">
+      <button class="detail-back" onclick="closeDetail()">
+        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+      </button>
+      <div class="detail-hero-content">
+        <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
+        <h1>Rio Teles Pires</h1>
+        <p class="detail-subtitle">Uma experiência inesquecível de pesca esportiva no coração da Amazônia</p>
+        <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Tenho%20interesse%20no%20roteiro%20Rio%20Teles%20Pires." class="btn-specialist" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          Fale com um Especialista Agora
+        </a>
+      </div>
+    </div>
+
+    <!-- Conforto e estrutura -->
+    <div class="detail-comfort">
+      <div class="container">
+        <div class="detail-comfort-text">
+          <h2>Conforto e estrutura completa em meio à floresta Amazônica</h2>
+          <p>A estrutura do Rio Teles Pires foi pensada para oferecer o máximo de conforto e segurança, mesmo em locais remotos. Você terá à disposição acomodações de alto padrão, alimentação completa e toda a infraestrutura necessária para uma experiência memorável.</p>
+          <p>Cada detalhe é cuidadosamente planejado para que você foque exclusivamente na pescaria, enquanto nós cuidamos de todo o resto.</p>
+        </div>
+        <div class="detail-comfort-img" style="background-image: url('/images/detail-teles-pires-comfort.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Citação do destino -->
+    <div class="detail-quote">
+      <blockquote>
+        "Você foca na experiência e nós cuidamos de tudo."
+      </blockquote>
+    </div>
+
+    <!-- 4 Feature cards -->
+    <div class="detail-features">
+      <div class="container">
+        <div class="detail-features-grid">
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-hospedagem.jpg'); background-color: #3a6b5c;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-bed"></i></div>
+              <h3>Hospedagem Premium</h3>
+              <p>Acomodações confortáveis em meio à natureza, com toda a infraestrutura para o seu descanso após um dia de pescaria.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-gastronomia.jpg'); background-color: #8B4513;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+              <h3>Gastronomia</h3>
+              <p>Alimentação completa com café da manhã, almoço e jantar preparados com ingredientes frescos e sabores regionais.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-estrutura.jpg'); background-color: #2c5a3f;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-campground"></i></div>
+              <h3>Estrutura</h3>
+              <p>Infraestrutura completa com barcos equipados, motores potentes e toda a segurança necessária para a sua expedição.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-pesca.jpg'); background-color: #1e4a3a;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-fish"></i></div>
+              <h3>Estrutura de Pesca</h3>
+              <p>Equipamentos de qualidade, guias especializados e conhecimento local para garantir as melhores capturas.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <button class="hero-arrow prev" id="heroPrev" aria-label="Slide anterior">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="hero-arrow next" id="heroNext" aria-label="Próximo slide">
-      <i class="fas fa-chevron-right"></i>
-    </button>
-  </section>
-
-  <!-- ====================================================================
-       QUEM SOMOS
-       ==================================================================== -->
-  <section class="about" id="quem-somos">
-    <div class="container">
-      <div class="about-logo">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
-          <circle cx="68" cy="42" r="32" fill="#edf2f7"/>
-          <g transform="translate(48, 28)">
-            <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
-            <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
-          </g>
-          <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.5"/>
-          <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.35"/>
-        </svg>
-      </div>
-
-      <div class="about-content">
-        <h2>Quem Somos</h2>
-        <div class="underline"></div>
-        <p>A <strong>DESTINNO Experience</strong> nasceu para transformar o planejamento da sua pescaria em uma expedição impecável. Nosso foco é conectar pescadores exigentes aos locais mais exclusivos da natureza, eliminando qualquer imprevisto.</p>
-        <p>Acreditamos que a pesca de alto padrão exige três pilares:</p>
-        <ul>
-          <li>Destinos selecionados com rigor</li>
-          <li>Logística completa e sem preocupações</li>
-          <li>Experiências que vão além da pescaria</li>
-        </ul>
-        <p>Com a DESTINNO, a sua única preocupação é pescar. Nós cuidamos de todo o resto.</p>
+    <!-- Os gigantes da Amazônia -->
+    <div class="detail-giants">
+      <div class="container">
+        <div class="detail-giants-text">
+          <h2>Os gigantes da Amazônia esperam por você.</h2>
+          <p class="giants-quote">"O Rio Teles Pires é um dos destinos mais piscosos do planeta e um verdadeiro berço dos Gigantes da Amazônia."</p>
+        </div>
+        <div class="detail-giants-img" style="background-image: url('/images/detail-teles-pires-giants.jpg');"></div>
       </div>
     </div>
-  </section>
 
-  <!-- ====================================================================
-       SEGURO VIAGEM
-       ==================================================================== -->
-  <section class="insurance">
-    <div class="container">
-      <div class="insurance-icon">
-        <i class="fas fa-shield-halved"></i>
+    <!-- Espécies e galeria -->
+    <div class="detail-species">
+      <div class="container">
+        <div class="detail-species-list">
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-compact-disc"></i></div>
+            <div>
+              <h3>Os Gigantes de Couro</h3>
+              <p>Enfrente a força brutal de espécies como Piraíba, Pirarara, Jaú, entre outros monstros do fundo do rio.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-bullseye"></i></div>
+            <div>
+              <h3>Pescaria de Arremesso</h3>
+              <p>Ação garantida na superfície com Tucunaré, Bicuda e Cachorra em extrema abundância.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-plus"></i></div>
+            <div>
+              <h3>E outras espécies que acompanham</h3>
+              <p>Uma biodiversidade incrível aguarda suas iscas: Jundiá, Cachara, Barbado, Palmito, Tambaqui, Matrinxã, Corvina e Pacu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-species-gallery">
+          <div class="species-gallery-slider" id="speciesSlider">
+            <div class="species-gallery-slide" style="background-image: url('/images/species-teles-pires-1.jpg');">
+              <div class="slide-caption">Troféus inesquecíveis pescados no Teles Pires</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-teles-pires-2.jpg');">
+              <div class="slide-caption">Os gigantes de couro do Rio Teles Pires</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-teles-pires-3.jpg');">
+              <div class="slide-caption">Pescaria de arremesso com ação garantida</div>
+            </div>
+          </div>
+          <button class="species-gallery-arrow prev" onclick="moveSpeciesSlider(-1)" aria-label="Foto anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="species-gallery-arrow next" onclick="moveSpeciesSlider(1)" aria-label="Próxima foto">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
-      <h2>🛡️ Seguro Viagem!</h2>
-      <p>Viaje com mais tranquilidade. A <strong>DESTINNO EXPERIENCE</strong> oferece o melhor caminho para a sua segurança e da sua família.</p>
-      <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Seguro%20Viagem." class="btn-whatsapp" target="_blank" rel="noopener">
+    </div>
+
+    <!-- Depoimentos (reutilizados) -->
+    <div class="testimonials">
+      <div class="container">
+        <h2>O que nossos clientes comentam</h2>
+
+        <div class="testimonials-wrapper">
+          <div class="testimonials-track" id="detailTestimonialsTrack">
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Carla Beth</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                </div>
+                <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Vinicius Martelo</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+                </div>
+                <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="testimonial-arrow prev" onclick="moveDetailTestimonials(-1)" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-arrow next" onclick="moveDetailTestimonials(1)" aria-label="Próximo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pacote All Inclusive / Não Incluso -->
+    <div class="detail-package">
+      <div class="container">
+        <div class="package-card package-included">
+          <h3><i class="fas fa-circle-check"></i> Pacote All Inclusive</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> Hospedagem em apartamentos duplos ou triplos;</li>
+            <li><i class="fas fa-check"></i> Alimentação completa (Café da manhã, Almoço, Porções/tira-gostos, Jantar);</li>
+            <li><i class="fas fa-check"></i> Água mineral, Refrigerantes, Sucos e Cerveja em lata;</li>
+            <li><i class="fas fa-check"></i> Internet Wi-Fi;</li>
+            <li><i class="fas fa-check"></i> Barco de 6 metros para cada 02 pescadores;</li>
+            <li><i class="fas fa-check"></i> Motor 30 HP e Combustível;</li>
+            <li><i class="fas fa-check"></i> Guia de pesca especializado;</li>
+            <li><i class="fas fa-check"></i> Isca branca;</li>
+            <li><i class="fas fa-check"></i> Coletes salva-vidas.</li>
+          </ul>
+        </div>
+
+        <div class="package-card package-excluded">
+          <h3><i class="fas fa-circle-exclamation"></i> Não Incluso</h3>
+          <p class="package-note">* Porém, a Destinno Experience organiza tudo com você de forma impecável.</p>
+          <ul>
+            <li><i class="fas fa-plus"></i> Traslado Alta Floresta x Pousada x Alta Floresta;</li>
+            <li><i class="fas fa-plus"></i> Equipamentos e Materiais de pesca;</li>
+            <li><i class="fas fa-plus"></i> Bebidas não mencionadas;</li>
+            <li><i class="fas fa-plus"></i> Chumbadas e Tuviras;</li>
+            <li><i class="fas fa-plus"></i> Licença de pesca;</li>
+            <li><i class="fas fa-plus"></i> Despesas pessoais;</li>
+            <li><i class="fas fa-plus"></i> Gorjetas para guias e funcionários.</li>
+          </ul>
+          <div class="package-info-box">
+            <i class="fas fa-triangle-exclamation"></i>
+            <p>Nossa equipe cuida da logística de transfer e indica os melhores materiais e trâmites burocráticos (licenças). Fale com a gente!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações Importantes + Dinâmica do Roteiro -->
+    <div class="detail-info">
+      <div class="container">
+        <div class="info-column">
+          <h2>Informações Importantes</h2>
+          <div class="info-cards">
+            <div class="info-card">
+              <h4><i class="fas fa-calendar-days"></i> Temporada 2027</h4>
+              <p>Mês de operação: Novembro a Julho. Vagas limitadas. Garanta a sua com antecedência.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-leaf"></i> Pesca Sustentável</h4>
+              <p>Praticamos rigorosamente a modalidade <strong>pesque e solte</strong> (Catch & Release), garantindo essa riqueza para as futuras gerações.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-shield-halved"></i> Segurança e Conforto</h4>
+              <p>É o que a Destinno Experience seleciona para você. Atendimento personalizado de grupos de diferentes tamanhos, com ou sem experiência prévia.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-column">
+          <h2>Dinâmica do Roteiro</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Dia 1 - Chegada</h4>
+              <p>Chegada ao aeroporto de Alta Floresta (MT). Nossa logística inicia com o transfer terrestre direto para a estrutura da pousada em meio à floresta. Check-in, reconhecimento do local e jantar de boas-vindas.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dias 2 ao 6 - A Pescaria</h4>
+              <p><strong>Cinco dias completos</strong> vivendo momentos memoráveis de pescaria no Rio Teles Pires. Saídas diárias focadas nos gigantes de couro ou arremesso, com almoço e descanso, retornando ao conforto da pousada no fim de tarde para compartilhar as histórias do dia.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 7 - Retorno</h4>
+              <p>Despedida da pousada e retorno terrestre para Alta Floresta. Conforme disponibilidade dos voos, você embarca no mesmo dia ou realiza pernoite na cidade de Alta Floresta (organizado pela Destinno).</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 8 - Conclusão (Opcional)</h4>
+              <p>Caso haja pernoite no Dia 7, o embarque de retorno para sua cidade de origem ocorre no oitavo dia.</p>
+            </div>
+          </div>
+          <div class="timeline-note">
+            * Nota: A quantidade de dias de pesca pode ser ajustada e personalizada de acordo com a pretensão e disponibilidade do cliente ou grupo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="detail-cta">
+      <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20a%20disponibilidade%20do%20roteiro%20Rio%20Teles%20Pires." class="btn-specialist" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i>
-        Saiba mais
+        Consultar Disponibilidade
       </a>
     </div>
-  </section>
 
-  <!-- ====================================================================
-       CITAÇÃO
-       ==================================================================== -->
-  <section class="quote-section">
-    <div class="wave-icon">〰️</div>
-    <blockquote>
-      "O rio não é apenas um destino, é onde a nossa alma encontra a verdadeira calma e a emoção do desconhecido."
-    </blockquote>
-    <p class="quote-author">— Viva a experiência</p>
-  </section>
-
-  <!-- ====================================================================
-       NOSSOS ROTEIROS
-       ==================================================================== -->
-  <section class="itineraries" id="roteiros">
-    <div class="container">
-      <h2>Nossos Destinos</h2>
-      <div class="section-line"></div>
-      <p class="section-desc">Explore as opções cuidadosamente selecionadas para a sua próxima grande aventura.</p>
-
-      <div class="itineraries-grid">
-        <!-- Card 1 - Baixo Rio Branco -->
-        <div class="itinerary-card">
-          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-branco.jpg'); background-color: #4a7c59;"></div>
-          <div class="itinerary-card-body">
-            <h3>Baixo Rio Branco</h3>
-            <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
-            <a href="#" class="btn-roteiro primary">Ver este roteiro</a>
+    <!-- Footer (mesmo da página principal) -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+                <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
+                <g transform="translate(48, 28)">
+                  <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+                  <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+                </g>
+                <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
+                <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="brand-name">DESTINNO</span>
+              <span class="brand-sub">Experience</span>
+            </div>
+            <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
           </div>
-        </div>
 
-        <!-- Card 2 - Rio Anauá -->
-        <div class="itinerary-card">
-          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-anaua.jpg'); background-color: #2980b9;"></div>
-          <div class="itinerary-card-body">
-            <h3>Rio Anauá</h3>
-            <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
-            <a href="#" class="btn-roteiro primary">Ver este roteiro</a>
-          </div>
-        </div>
-
-        <!-- Card 3 - Em Breve -->
-        <div class="itinerary-card">
-          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-em-breve.jpg'); background-color: #3a6b8c;"></div>
-          <div class="itinerary-card-body">
-            <h3>Em Breve</h3>
-            <p>Fique atento! Estamos preparando mais uma experiência incrível e exclusiva de pescaria de alto padrão para você.</p>
-            <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Quero%20ser%20avisado%20sobre%20novos%20roteiros." class="btn-roteiro secondary" target="_blank" rel="noopener">Quero ser avisado</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       DEPOIMENTOS
-       ==================================================================== -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>O que nossos clientes comentam</h2>
-
-      <div class="testimonials-wrapper">
-        <div class="testimonials-track" id="testimonialsTrack">
-          <!-- Depoimento 1 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="testimonial-header">
-                <div class="testimonial-info">
-                  <h4>Mauricio da Silva</h4>
-                  <div class="testimonial-stars">★★★★★</div>
-                </div>
-                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
-              </div>
-              <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+          <div class="footer-contact">
+            <h3>CONTATO</h3>
+            <div class="footer-contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
             </div>
           </div>
 
-          <!-- Depoimento 2 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="testimonial-header">
-                <div class="testimonial-info">
-                  <h4>Carla Beth</h4>
-                  <div class="testimonial-stars">★★★★★</div>
-                </div>
-                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
-              </div>
-              <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+          <div class="footer-social">
+            <h3>SIGA-NOS</h3>
+            <div class="footer-social-icons">
+              <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-          </div>
-
-          <!-- Depoimento 3 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="testimonial-header">
-                <div class="testimonial-info">
-                  <h4>Vinicius Martelo</h4>
-                  <div class="testimonial-stars">★★★★★</div>
-                </div>
-                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
-              </div>
-              <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
-            </div>
-          </div>
-
-          <!-- Depoimento 4 (clone para carrossel) -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="testimonial-header">
-                <div class="testimonial-info">
-                  <h4>Mauricio da Silva</h4>
-                  <div class="testimonial-stars">★★★★★</div>
-                </div>
-                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
-              </div>
-              <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
-            </div>
+            <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
           </div>
         </div>
 
-        <button class="testimonial-arrow prev" id="testPrev" aria-label="Anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="testimonial-arrow next" id="testNext" aria-label="Próximo">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       LOJA VIRTUAL
-       ==================================================================== -->
-  <section class="store" id="loja-virtual">
-    <div class="container">
-      <h2>Loja Virtual</h2>
-      <div class="section-line"></div>
-      <div class="store-placeholder">
-        <i class="fas fa-store"></i>
-        <h3>Em breve!</h3>
-        <p>Estamos preparando nossa loja virtual com produtos exclusivos para pescadores. Fique ligado!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       FOOTER
-       ==================================================================== -->
-  <footer class="footer" id="contato">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Coluna 1: Logo e tagline -->
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
-              <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
-              <g transform="translate(48, 28)">
-                <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
-                <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
-              </g>
-              <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
-              <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
-            </svg>
-            <span class="brand-name">DESTINNO</span>
-            <span class="brand-sub">Experience</span>
-          </div>
-          <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
-        </div>
-
-        <!-- Coluna 2: Contato -->
-        <div class="footer-contact">
-          <h3>CONTATO</h3>
-          <div class="footer-contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
-          </div>
-        </div>
-
-        <!-- Coluna 3: Redes Sociais -->
-        <div class="footer-social">
-          <h3>SIGA-NOS</h3>
-          <div class="footer-social-icons">
-            <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-          <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
+        <div class="footer-bottom">
+          <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
         </div>
       </div>
+    </footer>
 
-      <div class="footer-bottom">
-        <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
+  </div><!-- fim detail-teles-pires -->
 
   <!-- ====================================================================
        BOTÃO FLUTUANTE WHATSAPP
@@ -1488,6 +2503,53 @@
     document.getElementById('testPrev').addEventListener('click', () => moveTestimonials(-1));
     document.getElementById('testNext').addEventListener('click', () => moveTestimonials(1));
 
+    /* ---- Detail page testimonials carousel ---- */
+    let detailTestIndex = 0;
+
+    function moveDetailTestimonials(direction) {
+      const track = document.getElementById('detailTestimonialsTrack');
+      if (!track) return;
+      const visible = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+      const max = track.children.length - visible;
+      detailTestIndex += direction;
+      if (detailTestIndex < 0) detailTestIndex = 0;
+      if (detailTestIndex > max) detailTestIndex = 0;
+      const percent = detailTestIndex * (100 / visible);
+      track.style.transform = 'translateX(-' + percent + '%)';
+    }
+
+    /* ---- Species gallery slider ---- */
+    let speciesIndex = 0;
+
+    function moveSpeciesSlider(direction) {
+      const slider = document.getElementById('speciesSlider');
+      if (!slider) return;
+      const total = slider.children.length;
+      speciesIndex += direction;
+      if (speciesIndex < 0) speciesIndex = total - 1;
+      if (speciesIndex >= total) speciesIndex = 0;
+      slider.style.transform = 'translateX(-' + (speciesIndex * 100) + '%)';
+    }
+
+    /* ---- Abrir/fechar página de detalhes ---- */
+    function openDetail(destinationId) {
+      const mainContent = document.getElementById('mainContent');
+      const detail = document.getElementById('detail-' + destinationId);
+      if (!detail) return;
+
+      mainContent.classList.add('hidden');
+      detail.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function closeDetail() {
+      const mainContent = document.getElementById('mainContent');
+      const details = document.querySelectorAll('.destination-detail');
+
+      details.forEach(d => d.classList.remove('active'));
+      mainContent.classList.remove('hidden');
+    }
+
     /* ---- Barra de Pesquisa ---- */
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
@@ -1496,16 +2558,20 @@
       const query = searchInput.value.trim().toLowerCase();
       if (!query) return;
 
-      const sections = document.querySelectorAll('section, footer');
-      for (const section of sections) {
-        if (section.textContent.toLowerCase().includes(query)) {
-          const headerHeight = document.querySelector('.header').offsetHeight;
-          const top = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: top, behavior: 'smooth' });
-          searchInput.value = '';
-          break;
+      closeDetail();
+
+      setTimeout(() => {
+        const sections = document.querySelectorAll('#mainContent section, #mainContent footer');
+        for (const section of sections) {
+          if (section.textContent.toLowerCase().includes(query)) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const top = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+            searchInput.value = '';
+            break;
+          }
         }
-      }
+      }, 100);
     }
 
     searchBtn.addEventListener('click', handleSearch);
@@ -1516,8 +2582,10 @@
     /* ---- Smooth scroll com offset para header fixo ---- */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
           const headerHeight = document.querySelector('.header').offsetHeight;
           const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
