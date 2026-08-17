@@ -124,6 +124,45 @@
       object-fit: cover;
     }
 
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 10px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1.5px solid transparent;
+      border-radius: 3px;
+      padding: 1px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity var(--transition), border-color var(--transition);
+      line-height: 0;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      opacity: 1;
+      border-color: var(--color-gold);
+    }
+
+    .lang-btn svg {
+      display: block;
+    }
+
+    #google_translate_element {
+      display: none !important;
+    }
+
+    .goog-te-banner-frame,
+    .skiptranslate {
+      display: none !important;
+    }
+
+    body { top: 0 !important; }
+
     .header-main {
       display: flex;
       justify-content: space-between;
@@ -1767,7 +1806,12 @@
         --header-height: 80px;
       }
 
-      .header-top { display: none; }
+      .header-top { padding: 5px 15px; justify-content: center; }
+      .header-top .cadastur-badge > svg,
+      .header-top .cadastur-text,
+      .header-top .flag-br,
+      .header-top .flag-sc { display: none; }
+      .header-top .lang-switch { margin-left: 0; }
 
       .header-main {
         padding: 10px 15px;
@@ -1919,7 +1963,20 @@
           <rect x="14" y="4" width="12" height="4" fill="#ed1c24" rx="1"/>
           <rect x="14" y="12" width="12" height="4" fill="#ed1c24" rx="1"/>
         </svg>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="switchLang('pt')" title="Português" aria-label="Português">
+            <svg width="24" height="16" viewBox="0 0 28 20"><rect width="28" height="20" rx="2" fill="#009c3b"/><polygon points="14,2 26,10 14,18 2,10" fill="#ffdf00"/><circle cx="14" cy="10" r="4.5" fill="#002776"/><path d="M9.5,10 Q14,7 18.5,10" stroke="#fff" stroke-width="0.7" fill="none"/></svg>
+          </button>
+          <button class="lang-btn" onclick="switchLang('en')" title="English" aria-label="English">
+            <svg width="24" height="16" viewBox="0 0 60 40"><rect width="60" height="40" fill="#002868"/><rect y="3.08" width="60" height="3.08" fill="#fff"/><rect y="6.15" width="60" height="3.08" fill="#BF0A30"/><rect y="9.23" width="60" height="3.08" fill="#fff"/><rect y="12.31" width="60" height="3.08" fill="#BF0A30"/><rect y="15.38" width="60" height="3.08" fill="#fff"/><rect y="18.46" width="60" height="3.08" fill="#BF0A30"/><rect y="21.54" width="60" height="3.08" fill="#fff"/><rect y="24.62" width="60" height="3.08" fill="#BF0A30"/><rect y="27.69" width="60" height="3.08" fill="#fff"/><rect y="30.77" width="60" height="3.08" fill="#BF0A30"/><rect y="33.85" width="60" height="3.08" fill="#fff"/><rect y="36.92" width="60" height="3.08" fill="#BF0A30"/><rect width="24" height="21.54" fill="#002868"/></svg>
+          </button>
+          <button class="lang-btn" onclick="switchLang('es')" title="Español" aria-label="Español">
+            <svg width="24" height="16" viewBox="0 0 28 20"><rect width="28" height="20" rx="2" fill="#c60b1e"/><rect y="5" width="28" height="10" fill="#ffc400"/></svg>
+          </button>
+        </div>
       </div>
+      <div id="google_translate_element"></div>
     </div>
 
     <div class="header-main">
@@ -3783,7 +3840,43 @@
         }
       });
     });
+    /* ---- Google Translate ---- */
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+      var clicked = document.querySelector('.lang-btn[onclick*="' + lang + '"]');
+      if (clicked) clicked.classList.add('active');
+
+      if (lang === 'pt') {
+        var frame = document.querySelector('.goog-te-menu-frame');
+        if (frame) {
+          var items = frame.contentWindow.document.querySelectorAll('.goog-te-menu2-item span.text');
+          items.forEach(function(item) {
+            if (item.textContent === 'Portuguese' || item.textContent === 'Português') {
+              item.click();
+            }
+          });
+        }
+        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+        document.cookie = 'googtrans=; path=/; domain=' + location.hostname + '; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+        location.reload();
+        return;
+      }
+
+      var langMap = { 'en': '/pt/en', 'es': '/pt/es' };
+      document.cookie = 'googtrans=' + langMap[lang] + '; path=/';
+      document.cookie = 'googtrans=' + langMap[lang] + '; path=/; domain=' + location.hostname;
+      location.reload();
+    }
   </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
