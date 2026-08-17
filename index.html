@@ -1531,6 +1531,174 @@
     }
 
     /* ==========================================================================
+       15. SLIDER GENÉRICO DE IMAGENS
+       ========================================================================== */
+    .img-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .img-slider-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .img-slider-slide {
+      min-width: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .img-slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.35);
+      color: white;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 3;
+      transition: background var(--transition);
+    }
+
+    .img-slider-arrow:hover {
+      background: rgba(0,0,0,0.55);
+    }
+
+    .img-slider-arrow.prev { left: 10px; }
+    .img-slider-arrow.next { right: 10px; }
+
+    .img-slider.size-lg .img-slider-slide,
+    .img-slider.size-lg .img-slider-track {
+      min-height: 350px;
+    }
+
+    .img-slider.size-sm {
+      height: 180px;
+    }
+
+    .img-slider.size-sm .img-slider-slide,
+    .img-slider.size-sm .img-slider-track {
+      height: 180px;
+    }
+
+    .img-slider.size-sm .img-slider-arrow {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+    }
+
+    .img-slider.size-sm .img-slider-arrow.prev { left: 5px; }
+    .img-slider.size-sm .img-slider-arrow.next { right: 5px; }
+
+    /* ==========================================================================
+       16. TABELA TEMPORADA DE PESCA
+       ========================================================================== */
+    .detail-season {
+      padding: 60px 0;
+      background: var(--color-bg-white);
+    }
+
+    .season-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .season-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-blue-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .season-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .season-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--color-text-body);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .season-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-mb { background: #25d366; }
+    .dot-b { background: #2980b9; }
+    .dot-r { background: #d4a533; }
+    .dot-p { background: #333; }
+    .dot-f { background: #ccc; }
+
+    .season-table-wrap {
+      overflow-x: auto;
+    }
+
+    .season-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    .season-table thead th {
+      padding: 12px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-body);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--color-border);
+      text-align: center;
+    }
+
+    .season-table thead th:first-child {
+      text-align: left;
+      min-width: 160px;
+    }
+
+    .season-table tbody td {
+      padding: 12px 8px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-bg-light);
+    }
+
+    .season-table tbody td:first-child {
+      text-align: left;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      text-transform: uppercase;
+    }
+
+    .season-table tbody td .season-dot {
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
        12. RESPONSIVO - TABLET
        ========================================================================== */
     @media (max-width: 992px) {
@@ -1579,6 +1747,7 @@
       .species-gallery-slide { min-height: 350px; }
       .detail-package .container { grid-template-columns: 1fr; }
       .detail-info .container { grid-template-columns: 1fr; }
+      .season-legend { justify-content: flex-start; }
     }
 
     /* ==========================================================================
@@ -1700,6 +1869,10 @@
 
       .detail-package { padding: 50px 0; }
       .detail-info { padding: 50px 0; }
+
+      .season-header { flex-direction: column; align-items: flex-start; }
+      .season-legend { gap: 12px; }
+      .season-legend-item { font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -1919,7 +2092,27 @@
             </div>
           </div>
 
-          <!-- Card 6 - Em Breve -->
+          <!-- Card 6 - Rio Araguaia -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-araguaia.jpg'); background-color: #3a7c4a;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Araguaia</h3>
+              <p>Diversidade de espécies e grandes emoções na região da Ilha do Bananal. Pousada Asa Branca I.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('rio-araguaia')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 7 - Rio Acari -->
+          <div class="itinerary-card">
+            <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-acari.jpg'); background-color: #1b4a5a;"></div>
+            <div class="itinerary-card-body">
+              <h3>Rio Acari</h3>
+              <p>Expedição multiespécies na Amazônia preservada. Pinima Amazon Fishing Lodge com estrutura premium.</p>
+              <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('rio-acari')">Ver este roteiro</a>
+            </div>
+          </div>
+
+          <!-- Card 8 - Em Breve -->
           <div class="itinerary-card">
             <div class="itinerary-card-img" style="background-image: url('/images/roteiro-em-breve.jpg'); background-color: #3a6b8c;"></div>
             <div class="itinerary-card-body">
@@ -2214,6 +2407,89 @@
       </div>
     </div>
 
+    <!-- Temporada de Pesca -->
+    <div class="detail-season">
+      <div class="container">
+        <div class="season-header">
+          <span class="season-title">Temporada de Pesca</span>
+          <div class="season-legend">
+            <span class="season-legend-item"><span class="season-dot dot-mb"></span> Muito Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-b"></span> Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-r"></span> Regular</span>
+            <span class="season-legend-item"><span class="season-dot dot-p"></span> Piracema</span>
+            <span class="season-legend-item"><span class="season-dot dot-f"></span> Fora de Temporada</span>
+          </div>
+        </div>
+        <div class="season-table-wrap">
+          <table class="season-table">
+            <thead>
+              <tr>
+                <th>Espécie</th>
+                <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Piraíba</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Pirarara</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Jaú</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Jundiá</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Cachara</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Barbado</td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- Depoimentos (reutilizados) -->
     <div class="testimonials">
       <div class="container">
@@ -2433,6 +2709,877 @@
   </div><!-- fim detail-teles-pires -->
 
   <!-- ====================================================================
+       DETALHE — RIO ARAGUAIA / ASA BRANCA I
+       ==================================================================== -->
+  <div class="destination-detail" id="detail-rio-araguaia">
+
+    <!-- Hero -->
+    <div class="detail-hero" style="background-image: url('/images/detail-araguaia-hero.jpg');">
+      <button class="detail-back" onclick="closeDetail()">
+        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+      </button>
+      <div class="detail-hero-content">
+        <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
+        <h1>Rio Araguaia</h1>
+        <p class="detail-subtitle">Uma experiência para quem busca diversidade de espécies e grandes emoções na região da Ilha do Bananal, no Rio Araguaia.</p>
+        <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Tenho%20interesse%20no%20roteiro%20Rio%20Araguaia." class="btn-specialist" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          Fale com um Especialista Agora
+        </a>
+      </div>
+    </div>
+
+    <!-- Conforto e estrutura -->
+    <div class="detail-comfort">
+      <div class="container">
+        <div class="detail-comfort-text">
+          <h2>Estrutura e praticidade para viver a pesca esportiva no Rio Araguaia.</h2>
+          <p>Hospedagem em apartamentos climatizados, alimentação completa e operação de pesca estruturada em uma região privilegiada, próxima à Ilha do Bananal.</p>
+        </div>
+        <div class="detail-comfort-img" style="background-image: url('/images/detail-araguaia-comfort.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Citação -->
+    <div class="detail-quote">
+      <blockquote>
+        "Você foca na experiência e nós cuidamos de cada detalhe."
+      </blockquote>
+    </div>
+
+    <!-- 4 Feature cards -->
+    <div class="detail-features">
+      <div class="container">
+        <div class="detail-features-grid">
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-hospedagem.jpg'); background-color: #3a6b5c;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-bed"></i></div>
+              <h3>Hospedagem e Conforto</h3>
+              <p>Apartamentos quádruplos com ar-condicionado e chuveiro quente. As Pousadas Asa Branca I possuem estrutura para atender grupos de diferentes tamanhos.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-gastronomia.jpg'); background-color: #8B4513;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+              <h3>Gastronomia</h3>
+              <p>Alimentação completa com café da manhã, almoço e jantar. Para hospedagens acima de três diárias completas, a operação também inclui churrasco.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-estrutura.jpg'); background-color: #2c5a3f;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-map-location-dot"></i></div>
+              <h3>Localização Privilegiada</h3>
+              <p>A Asa Branca I está localizada em uma ilha, no encontro dos rios Araguaia e Cristalino, com acesso exclusivamente por barco e forte contato com a natureza.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-pesca.jpg'); background-color: #1e4a3a;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-fish"></i></div>
+              <h3>Estrutura de Pesca</h3>
+              <p>Operação com barco, motor e guia para cada dupla de pescadores, 20l de combustível por dia, gelo e isca natural.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Os gigantes -->
+    <div class="detail-giants">
+      <div class="container">
+        <div class="detail-giants-text">
+          <h2>Diversidade e força nas águas do Araguaia.</h2>
+          <p class="giants-quote">"Rio Araguaia, Rio Cristalino e corixos formam um cenário versátil para diferentes modalidades e espécies da pesca esportiva."</p>
+        </div>
+        <div class="detail-giants-img" style="background-image: url('/images/detail-araguaia-giants.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Espécies e galeria -->
+    <div class="detail-species">
+      <div class="container">
+        <div class="detail-species-list">
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-compact-disc"></i></div>
+            <div>
+              <h3>Os Gigantes de Couro</h3>
+              <p>Enfrente a força de espécies emblemáticas como piraíba, pirarara, pintado e cachara.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-bullseye"></i></div>
+            <div>
+              <h3>Pescaria de Arremesso</h3>
+              <p>Explore diferentes ambientes em busca de tucunarés, aruanãs, cachorras, bicudas e outras espécies esportivas da região.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-plus"></i></div>
+            <div>
+              <h3>Diferentes Modalidades</h3>
+              <p>Pesca fundeada, arremesso e fly fishing ampliam as possibilidades para pescadores iniciantes e experientes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-species-gallery">
+          <div class="species-gallery-slider" id="speciesSliderAraguaia">
+            <div class="species-gallery-slide" style="background-image: url('/images/species-araguaia-1.jpg');">
+              <div class="slide-caption">Grandes experiências nas águas do Rio Araguaia</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-araguaia-2.jpg');">
+              <div class="slide-caption">Diversidade de espécies no Araguaia</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-araguaia-3.jpg');">
+              <div class="slide-caption">Pesca esportiva no encontro dos rios</div>
+            </div>
+          </div>
+          <button class="species-gallery-arrow prev" onclick="moveSlider('speciesSliderAraguaia', -1)" aria-label="Foto anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="species-gallery-arrow next" onclick="moveSlider('speciesSliderAraguaia', 1)" aria-label="Próxima foto">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Temporada de Pesca — Araguaia -->
+    <div class="detail-season">
+      <div class="container">
+        <div class="season-header">
+          <span class="season-title">Temporada de Pesca</span>
+          <div class="season-legend">
+            <span class="season-legend-item"><span class="season-dot dot-mb"></span> Muito Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-b"></span> Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-r"></span> Regular</span>
+            <span class="season-legend-item"><span class="season-dot dot-p"></span> Piracema</span>
+            <span class="season-legend-item"><span class="season-dot dot-f"></span> Fora de Temporada</span>
+          </div>
+        </div>
+        <div class="season-table-wrap">
+          <table class="season-table">
+            <thead>
+              <tr>
+                <th>Espécie</th>
+                <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Piraíba</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+              <tr>
+                <td>Pirarara</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+              <tr>
+                <td>Pintado</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+              <tr>
+                <td>Cachara</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+              <tr>
+                <td>Tucunaré</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+              <tr>
+                <td>Aruanã</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="testimonials">
+      <div class="container">
+        <h2>O que nossos clientes comentam</h2>
+        <div class="testimonials-wrapper">
+          <div class="testimonials-track" id="detailTestimonialsTrackAraguaia">
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Carla Beth</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                </div>
+                <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Vinicius Martelo</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+                </div>
+                <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+          </div>
+          <button class="testimonial-arrow prev" onclick="moveCarousel('detailTestimonialsTrackAraguaia', -1)" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-arrow next" onclick="moveCarousel('detailTestimonialsTrackAraguaia', 1)" aria-label="Próximo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pacote All Inclusive / Não Incluso -->
+    <div class="detail-package">
+      <div class="container">
+        <div class="package-card package-included">
+          <h3><i class="fas fa-circle-check"></i> Pacote All Inclusive</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> Atendimento personalizado;</li>
+            <li><i class="fas fa-check"></i> Hospedagem em apartamentos quádruplos com ar-condicionado e chuveiro quente;</li>
+            <li><i class="fas fa-check"></i> Alimentação completa (café da manhã, almoço e jantar);</li>
+            <li><i class="fas fa-check"></i> Água, refrigerantes e cervejas à vontade;</li>
+            <li><i class="fas fa-check"></i> Churrasco para hospedagens acima de 3 diárias completas;</li>
+            <li><i class="fas fa-check"></i> Estacionamento no porto e acesso por barco à pousada;</li>
+            <li><i class="fas fa-check"></i> Barco para cada 02 pescadores;</li>
+            <li><i class="fas fa-check"></i> 20 litros de gasolina por barco/dia;</li>
+            <li><i class="fas fa-check"></i> Gelo e isca natural;</li>
+            <li><i class="fas fa-check"></i> Estrutura operacional completa.</li>
+          </ul>
+        </div>
+
+        <div class="package-card package-excluded">
+          <h3><i class="fas fa-circle-exclamation"></i> Não Incluso</h3>
+          <p class="package-note">* Porém, a Destinno Experience organiza tudo com você de forma impecável.</p>
+          <ul>
+            <li><i class="fas fa-plus"></i> Passagens e transfer externo;</li>
+            <li><i class="fas fa-plus"></i> Equipamentos pessoais de pesca;</li>
+            <li><i class="fas fa-plus"></i> Bebidas não contempladas e itens pessoais;</li>
+            <li><i class="fas fa-plus"></i> Licença de pesca;</li>
+            <li><i class="fas fa-plus"></i> Seguro de viagem, despesas pessoais e gorjetas.</li>
+          </ul>
+          <div class="package-info-box">
+            <i class="fas fa-triangle-exclamation"></i>
+            <p>Tralhas disponíveis para aluguel na pousada. Linhas, anzóis e chumbadas para reposição. Nossa equipe orienta a preparação da viagem, os equipamentos adequados à espécie-alvo e os detalhes da logística. Fale com a gente!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações Importantes + Dinâmica do Roteiro -->
+    <div class="detail-info">
+      <div class="container">
+        <div class="info-column">
+          <h2>Informações Importantes</h2>
+          <div class="info-cards">
+            <div class="info-card">
+              <h4><i class="fas fa-calendar-days"></i> Temporada de Pesca</h4>
+              <p>Período de operação: março a outubro. Disponibilidade e condições comerciais devem ser confirmadas antes da reserva. Vagas limitadas.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-leaf"></i> Pesca Consciente</h4>
+              <p>Praticamos rigorosamente a modalidade <strong>pesque e solte</strong> (Catch & Release), garantindo essa riqueza para as futuras gerações.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-shield-halved"></i> Segurança e Conforto</h4>
+              <p>Atendimento personalizado de grupos de diferentes tamanhos com ou sem experiência prévia e pista própria para acesso aéreo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-column">
+          <h2>Dinâmica do Roteiro</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Dia 1 - Chegada</h4>
+              <p>Chegada em São Miguel do Araguaia (GO), deslocamento até o Porto Fio Velasco. Acesso à pousada exclusivamente por barco.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dias 2 ao 6 - A Pescaria</h4>
+              <p><strong>Cinco dias completos</strong> de pesca no Rio Araguaia, Rio Cristalino e corixos da região. Diferentes modalidades e espécies a cada dia.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 7 - Retorno</h4>
+              <p>Retorno de barco ao Porto Fio Velasco e deslocamento de volta.</p>
+            </div>
+          </div>
+          <div class="timeline-note">
+            * Nota: A quantidade de dias de pesca pode ser ajustada e personalizada de acordo com a pretensão e disponibilidade do cliente ou grupo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="detail-cta">
+      <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20a%20disponibilidade%20do%20roteiro%20Rio%20Araguaia." class="btn-specialist" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        Consultar Disponibilidade
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+                <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
+                <g transform="translate(48, 28)">
+                  <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+                  <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+                </g>
+                <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
+                <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="brand-name">DESTINNO</span>
+              <span class="brand-sub">Experience</span>
+            </div>
+            <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
+          </div>
+          <div class="footer-contact">
+            <h3>CONTATO</h3>
+            <div class="footer-contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>SIGA-NOS</h3>
+            <div class="footer-social-icons">
+              <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- fim detail-rio-araguaia -->
+
+  <!-- ====================================================================
+       DETALHE — RIO ACARI / PINIMA AMAZON FISHING LODGE
+       ==================================================================== -->
+  <div class="destination-detail" id="detail-rio-acari">
+
+    <!-- Hero -->
+    <div class="detail-hero" style="background-image: url('/images/detail-acari-hero.jpg');">
+      <button class="detail-back" onclick="closeDetail()">
+        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+      </button>
+      <div class="detail-hero-content">
+        <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
+        <h1>Rio Acari</h1>
+        <p class="detail-subtitle">Uma expedição para quem busca uma pescaria de múltiplas espécies na amazônica.</p>
+        <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Tenho%20interesse%20no%20roteiro%20Rio%20Acari." class="btn-specialist" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          Fale com um Especialista Agora
+        </a>
+      </div>
+    </div>
+
+    <!-- Conforto e estrutura -->
+    <div class="detail-comfort">
+      <div class="container">
+        <div class="detail-comfort-text">
+          <h2>Conforto e estrutura completa para pesca esportiva no sul da Amazônia.</h2>
+          <p>Hospedagem completa às margens do Rio Acari, em uma região preservada da Bacia Amazônica. Quartos climatizados, pensão completa, gastronomia regional e ampla estrutura de lazer para uma experiência completa.</p>
+        </div>
+        <div class="detail-comfort-img" style="background-image: url('/images/detail-acari-comfort.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Citação -->
+    <div class="detail-quote">
+      <blockquote>
+        "Você foca na experiência e nós cuidamos de cada detalhe."
+      </blockquote>
+    </div>
+
+    <!-- 4 Feature cards -->
+    <div class="detail-features">
+      <div class="container">
+        <div class="detail-features-grid">
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-hospedagem.jpg'); background-color: #3a6b5c;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-bed"></i></div>
+              <h3>Hospedagem Premium</h3>
+              <p>Quartos e chalés duplos climatizados, com cama individual para cada hóspede, frigobar, maleiro, banheiro privativo e serviço de camareira/lavanderia. Capacidade para até 18 hóspedes.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-gastronomia.jpg'); background-color: #8B4513;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+              <h3>Gastronomia</h3>
+              <p>Pensão completa com café da manhã, almoço, jantar, sobremesas e petiscos, além de bebidas liberadas conforme o pacote da temporada.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-estrutura.jpg'); background-color: #2c5a3f;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-campground"></i></div>
+              <h3>Estrutura</h3>
+              <p>Restaurante, bar, piscina com hidromassagem, ofurôs, deck amazônico, quiosque, redário, salão de jogos e áreas de convivência integradas à natureza.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('/images/feature-pesca.jpg'); background-color: #1e4a3a;"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-fish"></i></div>
+              <h3>Estrutura de Pesca</h3>
+              <p>Bass Boat por dupla, com motor de popa de 100 HP, motor elétrico, plataforma de arremesso, caixa térmica, cadeira giratória, coletes salva-vidas e guia/piloteiro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Os gigantes -->
+    <div class="detail-giants">
+      <div class="container">
+        <div class="detail-giants-text">
+          <h2>A diversidade de grandes espécies do Rio Acari.</h2>
+          <p class="giants-quote">"Um sistema hídrico particular, em meio à Amazônia preservada, reúne espécies de escama e grandes peixes de couro em uma experiência multiespécies."</p>
+        </div>
+        <div class="detail-giants-img" style="background-image: url('/images/detail-acari-giants.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Espécies e galeria -->
+    <div class="detail-species">
+      <div class="container">
+        <div class="detail-species-list">
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-compact-disc"></i></div>
+            <div>
+              <h3>Gigantes de Couro</h3>
+              <p>Enfrente a força de espécies emblemáticas da Amazônia, como pirarara, piraíba, cachara, caparari, piranambu e jundiá.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-bullseye"></i></div>
+            <div>
+              <h3>Pescaria de Arremesso</h3>
+              <p>Tucunarés-açu, aruanãs, matrinxãs, apapás, bicudas e cachorras proporcionam uma pescaria dinâmica com iscas artificiais de superfície, meia-água e fundo.</p>
+            </div>
+          </div>
+
+          <div class="species-item">
+            <div class="species-icon"><i class="fas fa-plus"></i></div>
+            <div>
+              <h3>Uma diversidade que surpreende</h3>
+              <p>Além dos peixes de escama e de couro, o Rio Acari também abriga espécies como pirarucu, ampliando as possibilidades ao longo da expedição.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-species-gallery">
+          <div class="species-gallery-slider" id="speciesSliderAcari">
+            <div class="species-gallery-slide" style="background-image: url('/images/species-acari-1.jpg');">
+              <div class="slide-caption">Troféus inesquecíveis pescados no Rio Acari</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-acari-2.jpg');">
+              <div class="slide-caption">Multiespécies na Amazônia preservada</div>
+            </div>
+            <div class="species-gallery-slide" style="background-image: url('/images/species-acari-3.jpg');">
+              <div class="slide-caption">Pesca esportiva no coração da floresta</div>
+            </div>
+          </div>
+          <button class="species-gallery-arrow prev" onclick="moveSlider('speciesSliderAcari', -1)" aria-label="Foto anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="species-gallery-arrow next" onclick="moveSlider('speciesSliderAcari', 1)" aria-label="Próxima foto">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Temporada de Pesca — Acari -->
+    <div class="detail-season">
+      <div class="container">
+        <div class="season-header">
+          <span class="season-title">Temporada de Pesca</span>
+          <div class="season-legend">
+            <span class="season-legend-item"><span class="season-dot dot-mb"></span> Muito Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-b"></span> Bom</span>
+            <span class="season-legend-item"><span class="season-dot dot-r"></span> Regular</span>
+            <span class="season-legend-item"><span class="season-dot dot-p"></span> Piracema</span>
+            <span class="season-legend-item"><span class="season-dot dot-f"></span> Fora de Temporada</span>
+          </div>
+        </div>
+        <div class="season-table-wrap">
+          <table class="season-table">
+            <thead>
+              <tr>
+                <th>Espécie</th>
+                <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tucunaré-açu</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Pirarara</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Piraíba</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Cachara</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Caparari</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+              <tr>
+                <td>Pirarucu</td>
+                <td><span class="season-dot dot-f"></span></td><td><span class="season-dot dot-f"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-r"></span></td><td><span class="season-dot dot-r"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+                <td><span class="season-dot dot-mb"></span></td><td><span class="season-dot dot-mb"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="testimonials">
+      <div class="container">
+        <h2>O que nossos clientes comentam</h2>
+        <div class="testimonials-wrapper">
+          <div class="testimonials-track" id="detailTestimonialsTrackAcari">
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Carla Beth</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                </div>
+                <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Vinicius Martelo</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+                </div>
+                <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-header">
+                  <div class="testimonial-info">
+                    <h4>Mauricio da Silva</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                  </div>
+                  <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                </div>
+                <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+              </div>
+            </div>
+          </div>
+          <button class="testimonial-arrow prev" onclick="moveCarousel('detailTestimonialsTrackAcari', -1)" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-arrow next" onclick="moveCarousel('detailTestimonialsTrackAcari', 1)" aria-label="Próximo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pacote All Inclusive / Não Incluso -->
+    <div class="detail-package">
+      <div class="container">
+        <div class="package-card package-included">
+          <h3><i class="fas fa-circle-check"></i> Pacote All Inclusive</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> Atendimento personalizado;</li>
+            <li><i class="fas fa-check"></i> 1 diária em Manaus (quarto duplo);</li>
+            <li><i class="fas fa-check"></i> Hospedagem em quartos duplos climatizados;</li>
+            <li><i class="fas fa-check"></i> Pensão completa (café, almoço, jantar, sobremesas e petiscos);</li>
+            <li><i class="fas fa-check"></i> Bebidas liberadas (água, refrigerante, suco, cerveja puro malte, vinho, whisky, campari, vodka, gin, caipirinha e outros drinks);</li>
+            <li><i class="fas fa-check"></i> Internet Wi-Fi via Starlink;</li>
+            <li><i class="fas fa-check"></i> Bass Boat equipado para cada 02 pescadores;</li>
+            <li><i class="fas fa-check"></i> Motor de popa 100 HP, motor elétrico e combustível;</li>
+            <li><i class="fas fa-check"></i> Guia/piloteiro por dupla;</li>
+            <li><i class="fas fa-check"></i> Iscas brancas e chumbadas de cortesia;</li>
+            <li><i class="fas fa-check"></i> Coletes salva-vidas;</li>
+            <li><i class="fas fa-check"></i> Voo fretado Manaus–Pousada–Manaus e 2 translados;</li>
+            <li><i class="fas fa-check"></i> Caiaques e brinde exclusivo.</li>
+          </ul>
+        </div>
+
+        <div class="package-card package-excluded">
+          <h3><i class="fas fa-circle-exclamation"></i> Não Incluso</h3>
+          <p class="package-note">* Porém, a Destinno Experience organiza tudo com você de forma impecável.</p>
+          <ul>
+            <li><i class="fas fa-plus"></i> Passagens aéreas até Manaus;</li>
+            <li><i class="fas fa-plus"></i> Equipamentos e materiais pessoais de pesca;</li>
+            <li><i class="fas fa-plus"></i> Itens não mencionados;</li>
+            <li><i class="fas fa-plus"></i> Licença de pesca;</li>
+            <li><i class="fas fa-plus"></i> Gorjetas.</li>
+          </ul>
+          <div class="package-info-box">
+            <i class="fas fa-triangle-exclamation"></i>
+            <p>A tralha pessoal deve ser adequada às espécies e modalidades escolhidas. Nossa equipe orienta sobre os equipamentos recomendados para o Rio Acari. Fale com a gente!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações Importantes + Dinâmica do Roteiro -->
+    <div class="detail-info">
+      <div class="container">
+        <div class="info-column">
+          <h2>Informações Importantes</h2>
+          <div class="info-cards">
+            <div class="info-card">
+              <h4><i class="fas fa-calendar-days"></i> Temporada 2026</h4>
+              <p>Período de operação: Alta temporada de julho a dezembro. A operação também recebe pescadores de março a junho, período considerado baixa temporada.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-leaf"></i> Pesca Consciente</h4>
+              <p>Praticamos rigorosamente a modalidade <strong>pesque e solte</strong> (Catch & Release), garantindo essa riqueza para as futuras gerações.</p>
+            </div>
+            <div class="info-card">
+              <h4><i class="fas fa-shield-halved"></i> Segurança e Conforto</h4>
+              <p>Atendimento personalizado para pescadores iniciantes ou experientes, casais, famílias e grupos de amigos. Pista própria para acesso aéreo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-column">
+          <h2>Dinâmica do Roteiro</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Dia 1 - Chegada a Manaus</h4>
+              <p>Chegada ao aeroporto de Manaus. Translado e hospedagem em hotel (diária inclusa no pacote).</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 2 - Translado à Pousada</h4>
+              <p>Check-out do hotel, deslocamento ao aeroclube. Voo fretado até a pousada. Acomodação e reconhecimento da estrutura (sem pescaria).</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dias 3 ao 7 - A Pescaria</h4>
+              <p><strong>Cinco dias completos</strong> de pesca no Rio Acari e afluentes. Saídas diárias com Bass Boat equipado, focadas em multiespécies.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 8 - Retorno</h4>
+              <p>Voo fretado de retorno para Manaus. Translado ao aeroporto para embarque.</p>
+            </div>
+          </div>
+          <div class="timeline-note">
+            * Nota: A quantidade de dias de pesca pode ser ajustada e personalizada de acordo com a pretensão e disponibilidade do cliente ou grupo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="detail-cta">
+      <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20a%20disponibilidade%20do%20roteiro%20Rio%20Acari." class="btn-specialist" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        Consultar Disponibilidade
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+                <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
+                <g transform="translate(48, 28)">
+                  <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+                  <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+                </g>
+                <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
+                <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
+              </svg>
+              <span class="brand-name">DESTINNO</span>
+              <span class="brand-sub">Experience</span>
+            </div>
+            <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
+          </div>
+          <div class="footer-contact">
+            <h3>CONTATO</h3>
+            <div class="footer-contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>SIGA-NOS</h3>
+            <div class="footer-social-icons">
+              <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- fim detail-rio-acari -->
+
+  <!-- ====================================================================
        BOTÃO FLUTUANTE WHATSAPP
        ==================================================================== -->
   <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20roteiros%20da%20Destinno%20Experience." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -2518,17 +3665,38 @@
       track.style.transform = 'translateX(-' + percent + '%)';
     }
 
-    /* ---- Species gallery slider ---- */
-    let speciesIndex = 0;
+    /* ---- Species gallery slider (genérico) ---- */
+    const sliderIndexes = {};
 
     function moveSpeciesSlider(direction) {
-      const slider = document.getElementById('speciesSlider');
+      moveSlider('speciesSlider', direction);
+    }
+
+    function moveSlider(sliderId, direction) {
+      const slider = document.getElementById(sliderId);
       if (!slider) return;
+      if (!(sliderId in sliderIndexes)) sliderIndexes[sliderId] = 0;
       const total = slider.children.length;
-      speciesIndex += direction;
-      if (speciesIndex < 0) speciesIndex = total - 1;
-      if (speciesIndex >= total) speciesIndex = 0;
-      slider.style.transform = 'translateX(-' + (speciesIndex * 100) + '%)';
+      sliderIndexes[sliderId] += direction;
+      if (sliderIndexes[sliderId] < 0) sliderIndexes[sliderId] = total - 1;
+      if (sliderIndexes[sliderId] >= total) sliderIndexes[sliderId] = 0;
+      slider.style.transform = 'translateX(-' + (sliderIndexes[sliderId] * 100) + '%)';
+    }
+
+    /* ---- Carrossel de depoimentos genérico ---- */
+    const carouselIndexes = {};
+
+    function moveCarousel(trackId, direction) {
+      const track = document.getElementById(trackId);
+      if (!track) return;
+      if (!(trackId in carouselIndexes)) carouselIndexes[trackId] = 0;
+      const visible = window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+      const max = track.children.length - visible;
+      carouselIndexes[trackId] += direction;
+      if (carouselIndexes[trackId] < 0) carouselIndexes[trackId] = 0;
+      if (carouselIndexes[trackId] > max) carouselIndexes[trackId] = 0;
+      const percent = carouselIndexes[trackId] * (100 / visible);
+      track.style.transform = 'translateX(-' + percent + '%)';
     }
 
     /* ---- Abrir/fechar página de detalhes ---- */
