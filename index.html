@@ -153,17 +153,26 @@
     }
 
     #google_translate_element {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-      opacity: 0;
-      pointer-events: none;
-      height: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      height: 1px;
       overflow: hidden;
+      z-index: -1;
     }
 
-    .goog-te-banner-frame.skiptranslate {
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
       display: none !important;
+    }
+
+    .skiptranslate.goog-te-gadget {
+      font-size: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     body { top: 0 !important; }
@@ -3859,20 +3868,23 @@
       var clicked = document.querySelector('.lang-btn[onclick*="' + lang + '"]');
       if (clicked) clicked.classList.add('active');
 
-      var sel = document.querySelector('#google_translate_element select');
-      if (!sel) return;
-
-      if (lang === 'pt') {
-        sel.value = '';
-        sel.dispatchEvent(new Event('change'));
-        return;
+      var attempts = 0;
+      function tryTranslate() {
+        var combo = document.querySelector('.goog-te-combo');
+        if (!combo) {
+          attempts++;
+          if (attempts < 15) { setTimeout(tryTranslate, 400); }
+          return;
+        }
+        combo.value = (lang === 'pt') ? '' : lang;
+        var evt = document.createEvent('HTMLEvents');
+        evt.initEvent('change', true, true);
+        combo.dispatchEvent(evt);
       }
-
-      sel.value = lang;
-      sel.dispatchEvent(new Event('change'));
+      tryTranslate();
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
