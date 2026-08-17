@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DESTINNO Experience | Pesca Esportiva de Alto Padrão</title>
+  <meta name="description" content="Conectando você aos melhores destinos de pesca do Brasil. Experiências exclusivas e logística impecável." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS CSS - Altere as cores e fontes do site aqui
+       ========================================================================== */
+    :root {
+      --color-primary: #1b3a4b;
+      --color-primary-light: #2d5066;
+      --color-primary-dark: #142d3b;
+      --color-green: #25d366;
+      --color-green-hover: #1eba59;
+      --color-gold: #d4a533;
+      --color-blue-accent: #2980b9;
+      --color-bg-light: #edf2f7;
+      --color-bg-white: #ffffff;
+      --color-text-dark: #1b3a4b;
+      --color-text-body: #555;
+      --color-text-light: #fff;
+      --color-text-muted: #999;
+      --color-border: #e0e0e0;
+      --color-shadow: rgba(0, 0, 0, 0.1);
+
+      --font-primary: 'Poppins', sans-serif;
+      --font-script: 'Dancing Script', cursive;
+
+      --header-height: 140px;
+      --max-width: 1200px;
+      --radius: 8px;
+      --transition: 0.3s ease;
+    }
+
+    /* ==========================================================================
+       2. RESET E BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--color-text-dark);
+      background: var(--color-bg-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { cursor: pointer; border: none; outline: none; font-family: var(--font-primary); }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       3. HEADER
+       ========================================================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--color-bg-white);
+      z-index: 1000;
+      box-shadow: 0 2px 10px var(--color-shadow);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 8px 40px;
+      gap: 10px;
+    }
+
+    .header-top .cadastur-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-top .cadastur-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      letter-spacing: 0.5px;
+    }
+
+    .header-top .flags {
+      display: flex;
+      gap: 5px;
+    }
+
+    .header-top .flags img {
+      width: 28px;
+      height: 20px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px 15px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo svg {
+      width: 100px;
+      height: 100px;
+    }
+
+    .logo-text {
+      text-align: center;
+      margin-top: -5px;
+    }
+
+    .logo-text .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: 3px;
+      display: block;
+    }
+
+    .logo-text .brand-sub {
+      font-family: var(--font-script);
+      font-size: 1.3rem;
+      color: var(--color-gold);
+      margin-top: -5px;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .nav a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width var(--transition);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ==========================================================================
+       4. HERO / SLIDER
+       ========================================================================== */
+    .hero {
+      margin-top: var(--header-height);
+      position: relative;
+      height: 550px;
+      overflow: hidden;
+    }
+
+    .hero-slider {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-slide-content {
+      position: relative;
+      z-index: 2;
+      color: var(--color-text-light);
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-slide-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      font-style: italic;
+    }
+
+    .hero-slide-content p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background var(--transition);
+      cursor: pointer;
+    }
+
+    .hero-arrow:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .hero-arrow.prev { left: 20px; }
+    .hero-arrow.next { right: 20px; }
+
+    /* ==========================================================================
+       5. SEÇÃO QUEM SOMOS
+       ========================================================================== */
+    .about {
+      padding: 80px 0;
+      background: var(--color-bg-white);
+    }
+
+    .about .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .about-logo {
+      flex: 0 0 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--color-bg-light);
+      border-radius: var(--radius);
+      padding: 40px;
+      min-height: 350px;
+    }
+
+    .about-logo svg {
+      width: 200px;
+      height: 200px;
+      opacity: 0.7;
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 5px;
+    }
+
+    .about-content .underline {
+      width: 70px;
+      height: 3px;
+      background: var(--color-primary);
+      margin-bottom: 25px;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      color: var(--color-text-body);
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .about-content ul {
+      margin: 10px 0 20px 0;
+    }
+
+    .about-content ul li {
+      font-size: 1rem;
+      color: var(--color-text-body);
+      padding: 5px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .about-content ul li::before {
+      content: '\2714';
+      position: absolute;
+      left: 0;
+      color: var(--color-green);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       6. SEÇÃO SEGURO VIAGEM
+       ========================================================================== */
+    .insurance {
+      padding: 60px 0;
+      background: var(--color-bg-light);
+      text-align: center;
+    }
+
+    .insurance-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--color-bg-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 15px var(--color-shadow);
+    }
+
+    .insurance-icon i {
+      font-size: 1.8rem;
+      color: var(--color-blue-accent);
+    }
+
+    .insurance h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 15px;
+    }
+
+    .insurance p {
+      font-size: 1rem;
+      color: var(--color-text-body);
+      max-width: 550px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-green);
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border-radius: 50px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--color-green-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp i {
+      font-size: 1.2rem;
+    }
+
+    /* ==========================================================================
+       7. SEÇÃO CITAÇÃO
+       ========================================================================== */
+    .quote-section {
+      position: relative;
+      padding: 100px 20px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('/images/quote-river.jpg');
+      background-color: #2c3e3a;
+    }
+
+    .quote-section .wave-icon {
+      font-size: 1.5rem;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .quote-section blockquote {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      font-style: italic;
+      max-width: 750px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+
+    .quote-section .quote-author {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       8. SEÇÃO NOSSOS ROTEIROS
+       ========================================================================== */
+    .itineraries {
+      padding: 80px 0;
+      background: var(--color-bg-light);
+    }
+
+    .itineraries h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--color-text-dark);
+    }
+
+    .itineraries .section-line {
+      width: 60px;
+      height: 3px;
+      background: var(--color-blue-accent);
+      margin: 10px auto 15px;
+      border-radius: 2px;
+    }
+
+    .itineraries .section-desc {
+      text-align: center;
+      color: var(--color-text-body);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 50px;
+    }
+
+    .itineraries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .itinerary-card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--color-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .itinerary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .itinerary-card-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      background-color: #3a6b5c;
+    }
+
+    .itinerary-card-body {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .itinerary-card-body h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-bottom: 12px;
+    }
+
+    .itinerary-card-body p {
+      font-size: 0.9rem;
+      color: var(--color-text-body);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn-roteiro {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-roteiro.primary {
+      background: var(--color-primary);
+      color: var(--color-text-light);
+    }
+
+    .btn-roteiro.primary:hover {
+      background: var(--color-primary-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-roteiro.secondary {
+      background: var(--color-green);
+      color: var(--color-text-light);
+    }
+
+    .btn-roteiro.secondary:hover {
+      background: var(--color-green-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       9. SEÇÃO DEPOIMENTOS
+       ========================================================================== */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--color-bg-white);
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--color-text-dark);
+      margin-bottom: 40px;
+    }
+
+    .testimonials-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial-card {
+      min-width: calc(100% / 3);
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .testimonial-card-inner {
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 30px;
+      height: 100%;
+    }
+
+    .testimonial-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-info h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      margin-bottom: 5px;
+    }
+
+    .testimonial-stars {
+      color: #f5a623;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-avatar {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--color-bg-light);
+    }
+
+    .testimonial-card-inner p {
+      font-size: 0.95rem;
+      color: var(--color-text-body);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .testimonial-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--color-bg-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      z-index: 3;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .testimonial-arrow:hover {
+      background: var(--color-bg-light);
+    }
+
+    .testimonial-arrow.prev { left: 0; }
+    .testimonial-arrow.next { right: 0; }
+
+    /* ==========================================================================
+       10. FOOTER
+       ========================================================================== */
+    .footer {
+      background: var(--color-primary);
+      color: var(--color-text-light);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo svg {
+      width: 90px;
+      height: 90px;
+    }
+
+    .footer-logo .brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--color-text-light);
+    }
+
+    .footer-logo .brand-sub {
+      font-family: var(--font-script);
+      font-size: 1.1rem;
+      color: var(--color-gold);
+      margin-top: -3px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .footer-contact h3,
+    .footer-social h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-contact-item i {
+      font-size: 1.1rem;
+      color: var(--color-green);
+    }
+
+    .footer-contact-item a {
+      color: rgba(255,255,255,0.85);
+      transition: color var(--transition);
+    }
+
+    .footer-contact-item a:hover {
+      color: var(--color-text-light);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .footer-social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .footer-social-icons a:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .footer-social .linkedin-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ==========================================================================
+       11. BOTÃO FLUTUANTE WHATSAPP
+       ========================================================================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background: var(--color-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.8rem;
+      z-index: 9999;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ==========================================================================
+       12. RESPONSIVO - TABLET
+       ========================================================================== */
+    @media (max-width: 992px) {
+      :root {
+        --header-height: 120px;
+      }
+
+      .header-main {
+        padding: 10px 20px 10px;
+      }
+
+      .logo svg { width: 70px; height: 70px; }
+      .logo-text .brand-name { font-size: 1rem; }
+      .logo-text .brand-sub { font-size: 1rem; }
+
+      .nav { gap: 20px; }
+      .nav a { font-size: 0.9rem; }
+
+      .hero { height: 400px; }
+      .hero-slide-content h1 { font-size: 2.2rem; }
+
+      .about .container { flex-direction: column; gap: 30px; }
+      .about-logo { flex: none; width: 100%; max-width: 350px; min-height: 250px; margin: 0 auto; }
+
+      .itineraries-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .testimonial-card { min-width: 50%; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+      .footer-brand { align-items: center; }
+      .footer-logo { align-items: center; }
+      .footer-contact-item { justify-content: center; }
+      .footer-social-icons { justify-content: center; }
+    }
+
+    /* ==========================================================================
+       13. RESPONSIVO - CELULAR
+       ========================================================================== */
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 80px;
+      }
+
+      .header-top { display: none; }
+
+      .header-main {
+        padding: 10px 15px;
+      }
+
+      .logo svg { width: 50px; height: 50px; }
+      .logo-text .brand-name { font-size: 0.85rem; letter-spacing: 2px; }
+      .logo-text .brand-sub { font-size: 0.85rem; }
+
+      .nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: var(--color-bg-white);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 5px 15px var(--color-shadow);
+        transform: translateY(-120%);
+        transition: transform var(--transition);
+        z-index: 999;
+      }
+
+      .nav.active {
+        transform: translateY(0);
+      }
+
+      .nav a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--color-border);
+        font-size: 1rem;
+      }
+
+      .nav a::after { display: none; }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .hero { height: 350px; }
+      .hero-slide-content h1 { font-size: 1.8rem; }
+      .hero-slide-content p { font-size: 0.95rem; }
+      .hero-arrow { width: 35px; height: 35px; font-size: 1.1rem; }
+
+      .about { padding: 50px 0; }
+      .about-content h2 { font-size: 1.6rem; }
+      .about-logo { min-height: 200px; padding: 30px; }
+      .about-logo svg { width: 140px; height: 140px; }
+
+      .insurance { padding: 40px 0; }
+      .insurance h2 { font-size: 1.5rem; }
+
+      .quote-section { padding: 60px 20px; background-attachment: scroll; }
+      .quote-section blockquote { font-size: 1.2rem; }
+
+      .itineraries { padding: 50px 0; }
+      .itineraries h2 { font-size: 1.6rem; }
+      .itineraries-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+      .testimonials { padding: 50px 0; }
+      .testimonials h2 { font-size: 1.5rem; }
+      .testimonial-card { min-width: 100%; }
+
+      .footer { padding: 40px 0 20px; }
+
+      .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 15px; right: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       HEADER
+       ==================================================================== -->
+  <header class="header" id="inicio">
+    <!-- Barra superior com Cadastur e bandeiras -->
+    <div class="header-top">
+      <div class="cadastur-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L8 6H4v4l-4 4 4 4v4h4l4 4 4-4h4v-4l4-4-4-4V6h-4L12 2z" fill="#d4a533"/>
+          <path d="M8 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/>
+        </svg>
+        <span class="cadastur-text">Cadastur</span>
+        <!-- Bandeira do Brasil -->
+        <svg class="flag-br" width="28" height="20" viewBox="0 0 28 20">
+          <rect width="28" height="20" rx="2" fill="#009c3b"/>
+          <polygon points="14,2 26,10 14,18 2,10" fill="#ffdf00"/>
+          <circle cx="14" cy="10" r="4.5" fill="#002776"/>
+          <path d="M9.5,10 Q14,7 18.5,10" stroke="#fff" stroke-width="0.7" fill="none"/>
+        </svg>
+        <!-- Bandeira de Santa Catarina -->
+        <svg class="flag-sc" width="28" height="20" viewBox="0 0 28 20">
+          <rect width="28" height="20" rx="2" fill="#fff"/>
+          <rect width="28" height="10" fill="#ed1c24"/>
+          <rect y="10" width="28" height="10" fill="#fff"/>
+          <polygon points="6,3 8,7 12,7 9,9.5 10,13.5 6,11 2,13.5 3,9.5 0,7 4,7" fill="#009c3b"/>
+          <rect x="14" y="4" width="12" height="4" fill="#ed1c24" rx="1"/>
+          <rect x="14" y="12" width="12" height="4" fill="#ed1c24" rx="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Logo e navegação -->
+    <div class="header-main">
+      <a href="#inicio" class="logo">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Lua crescente -->
+          <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.5"/>
+          <circle cx="68" cy="42" r="32" fill="white"/>
+          <!-- Estrela 8 pontas -->
+          <g transform="translate(48, 28)">
+            <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+            <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+          </g>
+          <!-- Ondas de reflexo -->
+          <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.6"/>
+          <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <path d="M35,104 Q42,101 50,104 Q58,107 65,104 Q72,101 80,104" stroke="#c9bfa0" stroke-width="1" fill="none" opacity="0.3"/>
+        </svg>
+        <div class="logo-text">
+          <span class="brand-name">DESTINNO</span>
+          <span class="brand-sub">Experience</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#inicio">Início</a>
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#roteiros">Nossos Roteiros</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       HERO / SLIDER
+       ==================================================================== -->
+  <section class="hero">
+    <div class="hero-slider" id="heroSlider">
+      <!-- Slide 1 -->
+      <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-fishing.jpg'); background-color: #2c5a3f;">
+        <div class="hero-slide-content">
+          <h1>O Melhor da Pesca Esportiva</h1>
+          <p>Conectando você aos melhores destinos de pesca do Brasil.</p>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-adventure.jpg'); background-color: #1e4a3a;">
+        <div class="hero-slide-content">
+          <h1>Aventura na Natureza</h1>
+          <p>Expedições exclusivas em rios e lagos preservados.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Slide anterior">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hero-arrow next" id="heroNext" aria-label="Próximo slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </section>
+
+  <!-- ====================================================================
+       QUEM SOMOS
+       ==================================================================== -->
+  <section class="about" id="quem-somos">
+    <div class="container">
+      <div class="about-logo">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+          <circle cx="68" cy="42" r="32" fill="#edf2f7"/>
+          <g transform="translate(48, 28)">
+            <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+            <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+          </g>
+          <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="about-content">
+        <h2>Quem Somos</h2>
+        <div class="underline"></div>
+        <p>A <strong>DESTINNO Experience</strong> nasceu para transformar o planejamento da sua pescaria em uma expedição impecável. Nosso foco é conectar pescadores exigentes aos locais mais exclusivos da natureza, eliminando qualquer imprevisto.</p>
+        <p>Acreditamos que a pesca de alto padrão exige três pilares:</p>
+        <ul>
+          <li>Destinos selecionados com rigor</li>
+          <li>Logística completa e sem preocupações</li>
+          <li>Experiências que vão além da pescaria</li>
+        </ul>
+        <p>Com a DESTINNO, a sua única preocupação é pescar. Nós cuidamos de todo o resto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       SEGURO VIAGEM
+       ==================================================================== -->
+  <section class="insurance">
+    <div class="container">
+      <div class="insurance-icon">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <h2>🛡️ Seguro Viagem!</h2>
+      <p>Viaje com mais tranquilidade. A <strong>DESTINNO EXPERIENCE</strong> oferece o melhor caminho para a sua segurança e da sua família.</p>
+      <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Seguro%20Viagem." class="btn-whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        Saiba mais
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       CITAÇÃO
+       ==================================================================== -->
+  <section class="quote-section">
+    <div class="wave-icon">〰️</div>
+    <blockquote>
+      "O rio não é apenas um destino, é onde a nossa alma encontra a verdadeira calma e a emoção do desconhecido."
+    </blockquote>
+    <p class="quote-author">— Viva a experiência</p>
+  </section>
+
+  <!-- ====================================================================
+       NOSSOS ROTEIROS
+       ==================================================================== -->
+  <section class="itineraries" id="roteiros">
+    <div class="container">
+      <h2>Nossos Roteiros</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Explore as opções cuidadosamente selecionadas para a sua próxima grande aventura.</p>
+
+      <div class="itineraries-grid">
+        <!-- Card 1 - Baixo Rio Branco -->
+        <div class="itinerary-card">
+          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-branco.jpg'); background-color: #4a7c59;"></div>
+          <div class="itinerary-card-body">
+            <h3>Baixo Rio Branco</h3>
+            <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+            <a href="#" class="btn-roteiro primary">Ver este roteiro</a>
+          </div>
+        </div>
+
+        <!-- Card 2 - Rio Anauá -->
+        <div class="itinerary-card">
+          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-rio-anaua.jpg'); background-color: #2980b9;"></div>
+          <div class="itinerary-card-body">
+            <h3>Rio Anauá</h3>
+            <p>Breve descrição sobre o local, o que esperar da pescaria e a experiência exclusiva proporcionada neste roteiro.</p>
+            <a href="#" class="btn-roteiro primary">Ver este roteiro</a>
+          </div>
+        </div>
+
+        <!-- Card 3 - Em Breve -->
+        <div class="itinerary-card">
+          <div class="itinerary-card-img" style="background-image: url('/images/roteiro-em-breve.jpg'); background-color: #3a6b8c;"></div>
+          <div class="itinerary-card-body">
+            <h3>Em Breve</h3>
+            <p>Fique atento! Estamos preparando mais uma experiência incrível e exclusiva de pescaria de alto padrão para você.</p>
+            <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Quero%20ser%20avisado%20sobre%20novos%20roteiros." class="btn-roteiro secondary" target="_blank" rel="noopener">Quero ser avisado</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       DEPOIMENTOS
+       ==================================================================== -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>O que nossos clientes comentam</h2>
+
+      <div class="testimonials-wrapper">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <!-- Depoimento 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="testimonial-header">
+                <div class="testimonial-info">
+                  <h4>Mauricio da Silva</h4>
+                  <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+              </div>
+              <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+            </div>
+          </div>
+
+          <!-- Depoimento 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="testimonial-header">
+                <div class="testimonial-info">
+                  <h4>Carla Beth</h4>
+                  <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+              </div>
+              <p>"A curadoria fez toda a diferença. Economizamos tempo e encontramos uma experiência exatamente como imaginávamos."</p>
+            </div>
+          </div>
+
+          <!-- Depoimento 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="testimonial-header">
+                <div class="testimonial-info">
+                  <h4>Vinicius Martelo</h4>
+                  <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+              </div>
+              <p>"Viajei com tranquilidade porque todas as etapas estavam bem organizadas e as informações foram passadas com clareza."</p>
+            </div>
+          </div>
+
+          <!-- Depoimento 4 (clone para carrossel) -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="testimonial-header">
+                <div class="testimonial-info">
+                  <h4>Mauricio da Silva</h4>
+                  <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+              </div>
+              <p>"Já fiz outras viagens de pesca, mas dessa vez me surpreendi com o cuidado em cada detalhe. Com certeza faremos outra."</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="testimonial-arrow prev" id="testPrev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="testimonial-arrow next" id="testNext" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="footer" id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Coluna 1: Logo e tagline -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="55" cy="50" r="38" fill="#c9bfa0" opacity="0.4"/>
+              <circle cx="68" cy="42" r="32" fill="#1b3a4b"/>
+              <g transform="translate(48, 28)">
+                <polygon points="12,0 14.5,8.5 23,8.5 16,14 18.5,23 12,18 5.5,23 8,14 1,8.5 9.5,8.5" fill="#d4a533"/>
+                <polygon points="12,2 14,9 21,9 15.5,13.5 17.5,21 12,17 6.5,21 8.5,13.5 3,9 10,9" fill="#e8b93e"/>
+              </g>
+              <path d="M25,92 Q35,88 45,92 Q55,96 65,92 Q75,88 85,92" stroke="#c9bfa0" stroke-width="2" fill="none" opacity="0.4"/>
+              <path d="M30,98 Q40,94 50,98 Q60,102 70,98 Q80,94 90,98" stroke="#c9bfa0" stroke-width="1.5" fill="none" opacity="0.3"/>
+            </svg>
+            <span class="brand-name">DESTINNO</span>
+            <span class="brand-sub">Experience</span>
+          </div>
+          <p>A sua única preocupação é pescar. Experiências exclusivas e logística impecável.</p>
+        </div>
+
+        <!-- Coluna 2: Contato -->
+        <div class="footer-contact">
+          <h3>CONTATO</h3>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/5511914489090" target="_blank" rel="noopener">+55 11 91448-9090</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:contato@destinnoexperience.com.br">contato@destinnoexperience.com.br</a>
+          </div>
+        </div>
+
+        <!-- Coluna 3: Redes Sociais -->
+        <div class="footer-social">
+          <h3>SIGA-NOS</h3>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/destinnoexperience/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@destinnoexperience" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <p class="linkedin-note">* LinkedIn empresarial será elaborado em breve.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 DESTINNO Experience. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       BOTÃO FLUTUANTE WHATSAPP
+       ==================================================================== -->
+  <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20roteiros%20da%20Destinno%20Experience." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ====================================================================
+       JAVASCRIPT
+       ==================================================================== -->
+  <script>
+    /* ---- Menu Mobile ---- */
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+
+    /* ---- Hero Slider ---- */
+    const heroSlider = document.getElementById('heroSlider');
+    const heroSlides = heroSlider.children;
+    let heroIndex = 0;
+    const heroTotal = heroSlides.length;
+
+    function goToHeroSlide(index) {
+      if (index < 0) index = heroTotal - 1;
+      if (index >= heroTotal) index = 0;
+      heroIndex = index;
+      heroSlider.style.transform = 'translateX(-' + (heroIndex * 100) + '%)';
+    }
+
+    document.getElementById('heroPrev').addEventListener('click', () => goToHeroSlide(heroIndex - 1));
+    document.getElementById('heroNext').addEventListener('click', () => goToHeroSlide(heroIndex + 1));
+
+    setInterval(() => goToHeroSlide(heroIndex + 1), 6000);
+
+    /* ---- Testimonials Carousel ---- */
+    const testTrack = document.getElementById('testimonialsTrack');
+    let testIndex = 0;
+
+    function getTestVisible() {
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 992) return 2;
+      return 3;
+    }
+
+    function getTestMax() {
+      return testTrack.children.length - getTestVisible();
+    }
+
+    function moveTestimonials(direction) {
+      const max = getTestMax();
+      testIndex += direction;
+      if (testIndex < 0) testIndex = 0;
+      if (testIndex > max) testIndex = 0;
+      const percent = testIndex * (100 / getTestVisible());
+      testTrack.style.transform = 'translateX(-' + percent + '%)';
+    }
+
+    document.getElementById('testPrev').addEventListener('click', () => moveTestimonials(-1));
+    document.getElementById('testNext').addEventListener('click', () => moveTestimonials(1));
+
+    /* ---- Smooth scroll com offset para header fixo ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerHeight = document.querySelector('.header').offsetHeight;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
