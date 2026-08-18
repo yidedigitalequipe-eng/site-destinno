@@ -534,15 +534,43 @@
       position: relative;
       padding: 100px 20px;
       text-align: center;
+      background-color: #2c3e3a;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('/images/quote-river.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('/images/quote-river.jpg');
-      background-color: #2c3e3a;
       -webkit-background-size: cover;
+      z-index: 0;
+    }
+
+    .quote-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      .quote-section::before {
+        background-attachment: scroll;
+      }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .quote-section::before {
+        background-attachment: scroll;
+      }
     }
 
     .quote-section .wave-icon {
@@ -1899,10 +1927,9 @@
 
       .quote-section {
         padding: 60px 20px;
+      }
+      .quote-section::before {
         background-attachment: scroll;
-        background-size: cover;
-        background-position: center;
-        -webkit-background-size: cover;
       }
       .quote-section blockquote { font-size: 1.2rem; }
 
@@ -2053,6 +2080,12 @@
           <div class="hero-slide-content">
             <h1>O Melhor da Pesca Esportiva</h1>
             <p>Conectando você aos melhores destinos de pesca do Brasil.</p>
+          </div>
+        </div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero-cenarios.jpg'); background-color: #1b4a3a;">
+          <div class="hero-slide-content">
+            <h1>Cenários Exclusivos: Paraísos da Pesca</h1>
+            <p>Destinos e paisagens que tornam cada pescaria inesquecível.</p>
           </div>
         </div>
       </div>
