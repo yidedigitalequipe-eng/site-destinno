@@ -1066,6 +1066,7 @@
       background-size: cover;
       background-position: center;
       background-color: var(--color-primary-dark);
+      overflow: hidden;
     }
 
     .detail-hero::before {
@@ -1073,6 +1074,101 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, rgba(20,45,59,0.85), rgba(27,58,75,0.6));
+      z-index: 1;
+    }
+
+    /* Detail Hero Slider */
+    .detail-hero-slider {
+      position: relative;
+      min-height: 550px;
+      overflow: hidden;
+    }
+    .detail-hero-slider::before {
+      display: none;
+    }
+    .detail-hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .detail-hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .detail-hero-slide.active {
+      opacity: 1;
+    }
+    .detail-hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(20,45,59,0.55), rgba(27,58,75,0.35));
+    }
+    .detail-hero-slider .detail-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 550px;
+      padding: 100px 20px 80px;
+    }
+    .detail-hero-slider .detail-hero-content h1 {
+      text-align: center;
+    }
+    .detail-hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .detail-hero-arrow:hover {
+      background: rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.8);
+    }
+    .detail-hero-arrow.prev { left: 20px; }
+    .detail-hero-arrow.next { right: 20px; }
+    .detail-hero-dots {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+    .detail-hero-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+    .detail-hero-dot.active {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      transform: scale(1.2);
     }
 
     .detail-hero-content {
@@ -2183,9 +2279,16 @@
 
       /* Detail page mobile */
       .detail-hero { min-height: 400px; }
+      .detail-hero-slider { min-height: 420px; }
+      .detail-hero-slider .detail-hero-content { min-height: 420px; padding: 80px 15px 70px; }
       .detail-hero-content h1 { font-size: 1.8rem; }
       .detail-hero-content .detail-subtitle { font-size: 1rem; }
       .detail-back { top: 10px; left: 10px; padding: 8px 18px; font-size: 0.85rem; }
+      .detail-hero-arrow { width: 38px; height: 38px; font-size: 1rem; }
+      .detail-hero-arrow.prev { left: 10px; }
+      .detail-hero-arrow.next { right: 10px; }
+      .detail-hero-dots { bottom: 15px; gap: 8px; }
+      .detail-hero-dot { width: 10px; height: 10px; }
 
       .detail-comfort { padding: 50px 0; }
       .detail-comfort-text h2 { font-size: 1.5rem; }
@@ -2747,8 +2850,15 @@
        ==================================================================== -->
   <div class="destination-detail" id="detail-teles-pires">
 
-    <!-- Hero -->
-    <div class="detail-hero" style="background-image: url('images/detail-teles-pires-hero.jpg');">
+    <!-- Hero Slider -->
+    <div class="detail-hero detail-hero-slider" id="teles-pires-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/teles-pires-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/teles-pires-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/teles-pires-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/teles-pires-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/teles-pires-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -2761,6 +2871,15 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('teles-pires-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('teles-pires-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('teles-pires-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('teles-pires-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('teles-pires-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('teles-pires-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('teles-pires-hero-slider', 4)"></button>
       </div>
     </div>
 
@@ -4207,6 +4326,12 @@
       mainContent.classList.add('hidden');
       detail.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
+
+      var sliders = detail.querySelectorAll('.detail-hero-slider');
+      sliders.forEach(function(slider) {
+        var id = slider.id;
+        if (id) resetDetailHeroTimer(id);
+      });
     }
 
     function closeDetail() {
@@ -4215,6 +4340,58 @@
 
       details.forEach(d => d.classList.remove('active'));
       mainContent.classList.remove('hidden');
+
+      Object.keys(detailHeroTimers).forEach(function(id) {
+        clearInterval(detailHeroTimers[id]);
+        delete detailHeroTimers[id];
+      });
+    }
+
+    /* ---- Detail Hero Slider ---- */
+    var detailHeroIndexes = {};
+    var detailHeroTimers = {};
+
+    function detailHeroSlide(sliderId, dir) {
+      var slider = document.getElementById(sliderId);
+      if (!slider) return;
+      var slides = slider.querySelectorAll('.detail-hero-slide');
+      var dots = slider.querySelectorAll('.detail-hero-dot');
+      var total = slides.length;
+      if (!detailHeroIndexes[sliderId]) detailHeroIndexes[sliderId] = 0;
+
+      slides[detailHeroIndexes[sliderId]].classList.remove('active');
+      dots[detailHeroIndexes[sliderId]].classList.remove('active');
+
+      detailHeroIndexes[sliderId] = (detailHeroIndexes[sliderId] + dir + total) % total;
+
+      slides[detailHeroIndexes[sliderId]].classList.add('active');
+      dots[detailHeroIndexes[sliderId]].classList.add('active');
+
+      resetDetailHeroTimer(sliderId);
+    }
+
+    function detailHeroGoTo(sliderId, idx) {
+      var slider = document.getElementById(sliderId);
+      if (!slider) return;
+      var slides = slider.querySelectorAll('.detail-hero-slide');
+      var dots = slider.querySelectorAll('.detail-hero-dot');
+
+      if (detailHeroIndexes[sliderId] === undefined) detailHeroIndexes[sliderId] = 0;
+      slides[detailHeroIndexes[sliderId]].classList.remove('active');
+      dots[detailHeroIndexes[sliderId]].classList.remove('active');
+
+      detailHeroIndexes[sliderId] = idx;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+
+      resetDetailHeroTimer(sliderId);
+    }
+
+    function resetDetailHeroTimer(sliderId) {
+      if (detailHeroTimers[sliderId]) clearInterval(detailHeroTimers[sliderId]);
+      detailHeroTimers[sliderId] = setInterval(function() {
+        detailHeroSlide(sliderId, 1);
+      }, 5000);
     }
 
     /* ---- Barra de Pesquisa ---- */
