@@ -1857,6 +1857,62 @@
     }
 
     /* ==========================================================================
+       GALERIA DE FOTOS DO DESTINO
+       ========================================================================== */
+    .detail-gallery {
+      padding: 40px 0;
+      background: var(--color-bg-light);
+    }
+    .detail-gallery .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .detail-gallery h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin-bottom: 25px;
+    }
+    .gallery-slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .gallery-slider-track {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 5px 0;
+    }
+    .gallery-slider-track::-webkit-scrollbar {
+      display: none;
+    }
+    .gallery-slider-track img {
+      flex: 0 0 auto;
+      width: 70%;
+      max-width: 600px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      scroll-snap-align: center;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+    .gallery-slider-track img:hover {
+      transform: scale(1.02);
+    }
+    @media (max-width: 768px) {
+      .gallery-slider-track img {
+        width: 85%;
+        height: 250px;
+      }
+    }
+
+    /* ==========================================================================
        PÁGINA QUEM SOMOS - DETALHES
        ========================================================================== */
     .about-detail-page {
@@ -2705,6 +2761,22 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+    </div>
+
+    <!-- Galeria de fotos -->
+    <div class="detail-gallery">
+      <div class="container">
+        <h2>Conheça o Rio Teles Pires</h2>
+        <div class="gallery-slider-wrapper">
+          <div class="gallery-slider-track">
+            <img src="images/teles-pires-1.jpg" alt="Rio Teles Pires - Vista aérea">
+            <img src="images/teles-pires-2.jpg" alt="Rio Teles Pires - Pesca">
+            <img src="images/teles-pires-3.jpg" alt="Rio Teles Pires - Paisagem">
+            <img src="images/teles-pires-4.jpg" alt="Rio Teles Pires - Estrutura">
+            <img src="images/teles-pires-5.jpg" alt="Rio Teles Pires - Experiência">
+          </div>
+        </div>
       </div>
     </div>
 
