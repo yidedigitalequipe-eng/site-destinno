@@ -1991,12 +1991,13 @@
         --header-height: 80px;
       }
 
-      .header-top { padding: 5px 15px; justify-content: center; }
-      .header-top .cadastur-badge > svg,
-      .header-top .cadastur-text,
+      .header-top { padding: 5px 15px; justify-content: space-between; }
+      .header-top .cadastur-badge > svg:first-child { display: none; }
+      .header-top .cadastur-text { font-size: 0.7rem; }
       .header-top .flag-br,
-      .header-top .flag-sc { display: none; }
-      .header-top .lang-switch { margin-left: 0; }
+      .header-top .flag-sc { width: 20px; height: 14px; }
+      .header-top .lang-switch { margin-left: auto; }
+      .header-top .lang-switch .lang-btn svg { width: 20px; height: 14px; }
 
       .header-main {
         padding: 10px 15px;
