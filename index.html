@@ -1297,44 +1297,12 @@
       background: var(--color-bg-light);
     }
 
-    .detail-features-section {
-      margin-bottom: 50px;
-    }
-    .detail-features-section:last-child {
-      margin-bottom: 0;
-    }
-
-    .detail-features-section-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--color-text-dark);
-      margin-bottom: 20px;
-    }
-
     .detail-features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 25px;
       max-width: 900px;
       margin: 0 auto;
-    }
-
-    .detail-features-expanded {
-      margin-top: 30px;
-      padding: 0 5px;
-    }
-    .detail-features-expanded h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--color-text-dark);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-    }
-    .detail-features-expanded p {
-      font-size: 1.05rem;
-      color: var(--color-text-body);
-      line-height: 1.7;
     }
 
     .detail-feature-card {
@@ -2328,11 +2296,8 @@
       .detail-comfort-text h2 { font-size: 1.5rem; }
       .detail-comfort-img { min-height: 250px; }
 
-      .detail-features { padding: 40px 0; }
-      .detail-features-section-title { font-size: 1.2rem; }
+      .detail-features { padding: 50px 0; }
       .detail-features-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-      .detail-features-expanded h3 { font-size: 1.1rem; }
-      .detail-features-expanded p { font-size: 0.95rem; }
 
       .detail-giants { padding: 50px 0; }
       .detail-giants-text h2 { font-size: 1.8rem; }
@@ -2955,64 +2920,46 @@
       </blockquote>
     </div>
 
-    <!-- Feature cards - seções numeradas -->
+    <!-- 4 Feature cards -->
     <div class="detail-features">
       <div class="container">
-
-        <!-- 6° Da Hospedagem -->
-        <div class="detail-features-section">
-          <h2 class="detail-features-section-title">6° Da Hospedagem</h2>
-          <div class="detail-features-grid">
-            <div class="detail-feature-card">
-              <div class="detail-feature-card-img" style="background-image: url('images/feature-hospedagem.jpg'); background-color: #3a6b5c;"></div>
-              <div class="detail-feature-card-body">
-                <div class="feature-icon"><i class="fas fa-bed"></i></div>
-                <h3>Hospedagem Premium</h3>
-                <p>Quartos suíte climatizados com ar condicionado, configuração de cama para solteiro e casal, banho quente e camareira de alta qualidade.</p>
-              </div>
-            </div>
-            <div class="detail-feature-card">
-              <div class="detail-feature-card-img" style="background-image: url('images/feature-gastronomia.jpg'); background-color: #8B4513;"></div>
-              <div class="detail-feature-card-body">
-                <div class="feature-icon"><i class="fas fa-utensils"></i></div>
-                <h3>Gastronomia</h3>
-                <p>Cardápio elaborado para a sua melhor experiência: delicioso café da manhã, almoço, jantar requintado e petiscos variados durante todo o dia.</p>
-              </div>
+        <div class="detail-features-grid">
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('images/feature-hospedagem.jpg');"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-bed"></i></div>
+              <h3>Hospedagem Premium</h3>
+              <p>Suítes climatizadas, configurações de camas para solteiro e casal, banheiros com água quente, roupa de cama de alta qualidade e capacidade para até 26 pescadores.</p>
             </div>
           </div>
-          <div class="detail-features-expanded">
-            <h3>Hospedagem Premium</h3>
-            <p>Suítes climatizadas, configurações de camas para solteiro e casal, banheiros com água quente, roupa de cama de alta qualidade e capacidade para até 26 pescadores.</p>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('images/feature-gastronomia.jpg');"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+              <h3>Gastronomia</h3>
+              <p>Cardápio elaborado para a sua melhor experiência: delicioso café da manhã, almoço, jantar requintado e petiscos variados durante todo o dia.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('images/feature-estrutura.jpg');"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-campground"></i></div>
+              <h3>Estrutura</h3>
+              <p>Restaurante aconchegante, bar completo e uma ampla área de convívio perfeitamente integrada em meio à exuberante Floresta Amazônica.</p>
+            </div>
+          </div>
+
+          <div class="detail-feature-card">
+            <div class="detail-feature-card-img" style="background-image: url('images/feature-estrutura-pesca.jpg');"></div>
+            <div class="detail-feature-card-body">
+              <div class="feature-icon"><i class="fas fa-fish"></i></div>
+              <h3>Estrutura de Pesca</h3>
+              <p>Barcos de 6 metros, equipados com motores de 30 HP, cadeiras giratórias almofadadas, coletes salva-vidas e guias regionais altamente especializados.</p>
+            </div>
           </div>
         </div>
-
-        <!-- 7° Estrutura de Pesca -->
-        <div class="detail-features-section">
-          <h2 class="detail-features-section-title">7° Estrutura de Pesca</h2>
-          <div class="detail-features-grid">
-            <div class="detail-feature-card">
-              <div class="detail-feature-card-img" style="background-image: url('images/feature-estrutura.jpg'); background-color: #2c5a3f;"></div>
-              <div class="detail-feature-card-body">
-                <div class="feature-icon"><i class="fas fa-campground"></i></div>
-                <h3>Estrutura</h3>
-                <p>Restaurante aconchegante, bar completo e uma ampla área de convívio perfeitamente integrada em meio à exuberante Floresta Amazônica.</p>
-              </div>
-            </div>
-            <div class="detail-feature-card">
-              <div class="detail-feature-card-img" style="background-image: url('images/feature-estrutura-pesca.jpg'); background-color: #1e4a3a;"></div>
-              <div class="detail-feature-card-body">
-                <div class="feature-icon"><i class="fas fa-fish"></i></div>
-                <h3>Estrutura de Pesca</h3>
-                <p>Barco plataformado de 6m, motores 30hp potentes, cadeiras giratórias almofadadas, coletes salva-vidas e guias regionais altamente especializados.</p>
-              </div>
-            </div>
-          </div>
-          <div class="detail-features-expanded">
-            <h3>Estrutura de Pesca</h3>
-            <p>Barcos de 6 metros, equipados com motores de 30 HP, cadeiras giratórias almofadadas, coletes salva-vidas e guias regionais altamente especializados.</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
