@@ -1853,6 +1853,137 @@
     }
 
     /* ==========================================================================
+       PÁGINA QUEM SOMOS - DETALHES
+       ========================================================================== */
+    .about-detail-page {
+      padding: 40px 0;
+    }
+    .about-detail-page .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .about-detail-intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .about-detail-intro h2 {
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    .about-detail-intro .underline {
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+      margin: 0 auto 20px;
+    }
+    .about-detail-intro p {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+    .about-detail-section {
+      margin-bottom: 50px;
+    }
+    .about-detail-section h3 {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-detail-section h3 i {
+      font-size: 1.2rem;
+      color: var(--color-accent);
+    }
+    .about-detail-section p {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .about-card {
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 30px 25px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--color-shadow);
+    }
+    .about-card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--color-bg-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.5rem;
+      color: var(--color-accent);
+    }
+    .about-card h4 {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    .about-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .about-checklist {
+      list-style: none;
+      padding: 0;
+    }
+    .about-checklist li {
+      padding: 10px 0;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.6;
+    }
+    .about-checklist li i {
+      color: #28a745;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    .about-values-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .about-value-tag {
+      background: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .about-value-tag i {
+      color: var(--color-accent);
+    }
+
+    /* ==========================================================================
        13. RESPONSIVO - CELULAR
        ========================================================================== */
     @media (max-width: 768px) {
@@ -2140,6 +2271,7 @@
             <li>Experiências que vão além da pescaria</li>
           </ul>
           <p>Com a DESTINNO, a sua única preocupação é pescar. Nós cuidamos de todo o resto.</p>
+          <a href="javascript:void(0)" class="btn-roteiro primary" onclick="openDetail('quem-somos')" style="margin-top: 20px; display: inline-block;">Mais informações</a>
         </div>
       </div>
     </section>
@@ -2414,6 +2546,93 @@
     </footer>
 
   </div><!-- fim .main-content -->
+
+  <!-- ====================================================================
+       PÁGINA DE DETALHES - QUEM SOMOS
+       ==================================================================== -->
+  <div class="destination-detail" id="detail-quem-somos">
+
+    <div class="about-detail-page">
+      <div class="container">
+
+        <!-- Botão voltar -->
+        <a href="javascript:void(0)" class="detail-back" onclick="closeDetail()">
+          <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+
+        <!-- Quem Somos -->
+        <div class="about-detail-intro">
+          <div style="margin-bottom: 25px;">
+            <img src="images/destinno-about.jpg" alt="DESTINNO Experience Logo" style="max-width: 200px; height: auto;">
+          </div>
+          <h2>Quem Somos</h2>
+          <div class="underline"></div>
+          <p>Somos um guia digital especializado em turismo de pesca esportiva. Apresentamos destinos selecionados, rios, pousadas e operações de pesca em todo o Brasil, ajudando pescadores e amantes da pesca esportiva a encontrarem o destino ideal para viver experiências inesquecíveis.</p>
+        </div>
+
+        <!-- Nossa História -->
+        <div class="about-detail-section">
+          <h3><i class="fas fa-landmark"></i> Nossa História</h3>
+          <p>A Destinno Experience nasceu da paixão por viagens, pela natureza e por experiências que transformam momentos em memórias inesquecíveis.</p>
+          <p>Acreditamos que o turismo conecta pessoas e transforma experiências em lembranças que ficam para a vida toda.</p>
+          <p>Foi dessa paixão que surgiu o desejo de reunir, em um só lugar, informações confiáveis sobre os melhores destinos de pesca esportiva do Brasil. Percebemos que faltava um guia especializado para ajudar os pescadores a escolher, com segurança e confiança, onde viver sua próxima grande aventura.</p>
+          <p>Assim surgiu a Destinno Experience: um guia digital que conecta pescadores aos melhores destinos, rios, pousadas e operações parceiras selecionadas e de confiança, tornando a escolha da próxima pescaria mais simples, segura e inesquecível.</p>
+        </div>
+
+        <!-- Cards: Missão, Visão, Compromisso -->
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-card-icon"><i class="fas fa-bullseye"></i></div>
+            <h4>Nossa Missão</h4>
+            <p>Conectar pescadores aos melhores destinos de pesca esportiva do Brasil por meio de um guia digital confiável, valorizando experiências autênticas e parceiros comprometidos com qualidade.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon"><i class="fas fa-eye"></i></div>
+            <h4>Nossa Visão</h4>
+            <p>Ser o principal guia digital de pesca esportiva do Brasil, tornando-nos a primeira escolha de quem busca informações confiáveis, destinos de qualidade e experiências inesquecíveis para planejar sua próxima pescaria.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon"><i class="fas fa-handshake"></i></div>
+            <h4>Nosso Compromisso</h4>
+            <p>Selecionar e apresentar apenas destinos que ofereçam qualidade, estrutura e experiências verdadeiras, gerando valor tanto para os pescadores quanto para nossos parceiros e fortalecendo o turismo de pesca esportiva no Brasil.</p>
+          </div>
+        </div>
+
+        <!-- Nosso Propósito -->
+        <div class="about-detail-section" style="margin-top: 50px;">
+          <h3><i class="fas fa-compass"></i> Nosso Propósito</h3>
+          <p>Fortalecer o turismo de pesca esportiva no Brasil, aproximando pessoas de experiências memoráveis e contribuindo para o crescimento sustentável dos destinos, das operações parceiras e das comunidades que vivem do turismo.</p>
+        </div>
+
+        <!-- O Que Fazemos -->
+        <div class="about-detail-section">
+          <h3><i class="fas fa-check-double"></i> O Que Fazemos</h3>
+          <ul class="about-checklist">
+            <li><i class="fas fa-check-circle"></i> Apresentamos destinos selecionados de pesca esportiva em todo o Brasil.</li>
+            <li><i class="fas fa-check-circle"></i> Firmamos parcerias com pousadas e operações que compartilham nossos padrões de qualidade.</li>
+            <li><i class="fas fa-check-circle"></i> Produzimos conteúdos autênticos, informativos e inspiradores.</li>
+            <li><i class="fas fa-check-circle"></i> Conectamos pescadores a pousadas e operações parceiras.</li>
+            <li><i class="fas fa-check-circle"></i> Compartilhamos informações sobre espécies, temporadas e os diferenciais de cada destino.</li>
+            <li><i class="fas fa-check-circle"></i> Valorizamos operações que oferecem qualidade, segurança e experiências memoráveis.</li>
+          </ul>
+        </div>
+
+        <!-- Nossos Valores -->
+        <div class="about-detail-section">
+          <h3><i class="fas fa-star"></i> Nossos Valores</h3>
+          <div class="about-values-tags">
+            <span class="about-value-tag"><i class="fas fa-shield-halved"></i> Credibilidade</span>
+            <span class="about-value-tag"><i class="fas fa-search"></i> Transparência</span>
+            <span class="about-value-tag"><i class="fas fa-fish"></i> Respeito aos pescadores e parceiros</span>
+            <span class="about-value-tag"><i class="fas fa-award"></i> Compromisso com a qualidade</span>
+            <span class="about-value-tag"><i class="fas fa-leaf"></i> Valorização da pesca esportiva e sustentável</span>
+            <span class="about-value-tag"><i class="fas fa-balance-scale"></i> Ética em todas as relações</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- ====================================================================
        PÁGINA DE DETALHES - RIO TELES PIRES
