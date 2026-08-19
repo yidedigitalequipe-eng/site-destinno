@@ -4288,8 +4288,14 @@
        ==================================================================== -->
   <div class="destination-detail" id="detail-rio-cuiaba">
 
-    <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <!-- Hero Slider -->
+    <div class="detail-hero detail-hero-slider" id="rio-cuiaba-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-cuiaba-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-cuiaba-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-cuiaba-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-cuiaba-4.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -4302,6 +4308,14 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-cuiaba-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-cuiaba-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-cuiaba-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-cuiaba-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-cuiaba-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-cuiaba-hero-slider', 3)"></button>
       </div>
     </div>
 
