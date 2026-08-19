@@ -4719,7 +4719,14 @@
   <div class="destination-detail" id="detail-baixo-rio-branco">
 
     <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <div class="detail-hero detail-hero-slider" id="baixo-rio-branco-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-branco-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-branco-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-branco-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-branco-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-branco-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -4732,6 +4739,15 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('baixo-rio-branco-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('baixo-rio-branco-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('baixo-rio-branco-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('baixo-rio-branco-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('baixo-rio-branco-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('baixo-rio-branco-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('baixo-rio-branco-hero-slider', 4)"></button>
       </div>
     </div>
 
@@ -4751,7 +4767,7 @@
       <div class="container">
         <div class="detail-features-grid">
           <div class="detail-feature-card">
-            <div class="detail-feature-card-img" style="background-color: var(--color-primary-dark);"></div>
+            <div class="detail-feature-card-img" style="background-image: url('images/branco-hospedagem.jpg');"></div>
             <div class="detail-feature-card-body">
               <div class="feature-icon"><i class="fas fa-bed"></i></div>
               <h3>Hospedagem Premium</h3>
@@ -4760,7 +4776,7 @@
           </div>
 
           <div class="detail-feature-card">
-            <div class="detail-feature-card-img" style="background-color: var(--color-primary-dark);"></div>
+            <div class="detail-feature-card-img" style="background-image: url('images/branco-gastronomia.jpg');"></div>
             <div class="detail-feature-card-body">
               <div class="feature-icon"><i class="fas fa-utensils"></i></div>
               <h3>Gastronomia</h3>
@@ -4769,7 +4785,7 @@
           </div>
 
           <div class="detail-feature-card">
-            <div class="detail-feature-card-img" style="background-color: var(--color-primary-dark);"></div>
+            <div class="detail-feature-card-img" style="background-image: url('images/branco-estrutura.jpg');"></div>
             <div class="detail-feature-card-body">
               <div class="feature-icon"><i class="fas fa-campground"></i></div>
               <h3>Estrutura</h3>
@@ -4778,7 +4794,7 @@
           </div>
 
           <div class="detail-feature-card">
-            <div class="detail-feature-card-img" style="background-color: var(--color-primary-dark);"></div>
+            <div class="detail-feature-card-img" style="background-image: url('images/branco-estrutura-pesca.jpg');"></div>
             <div class="detail-feature-card-body">
               <div class="feature-icon"><i class="fas fa-fish"></i></div>
               <h3>Estrutura de Pesca</h3>
