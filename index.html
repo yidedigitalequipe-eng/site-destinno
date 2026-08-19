@@ -4482,8 +4482,15 @@
        ==================================================================== -->
   <div class="destination-detail" id="detail-rio-roosevelt">
 
-    <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <!-- Hero Slider -->
+    <div class="detail-hero detail-hero-slider" id="rio-roosevelt-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-roosevelt-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-roosevelt-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-roosevelt-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-roosevelt-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-roosevelt-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -4496,6 +4503,15 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-roosevelt-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-roosevelt-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-roosevelt-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-roosevelt-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-roosevelt-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-roosevelt-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-roosevelt-hero-slider', 4)"></button>
       </div>
     </div>
 
