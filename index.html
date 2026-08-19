@@ -4928,7 +4928,15 @@
   <div class="destination-detail" id="detail-rio-anaua">
 
     <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <div class="detail-hero detail-hero-slider" id="rio-anaua-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-anaua-1.png');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-5.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-6.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -4941,6 +4949,16 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-anaua-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-anaua-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-anaua-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-anaua-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-anaua-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-anaua-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-anaua-hero-slider', 4)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-anaua-hero-slider', 5)"></button>
       </div>
     </div>
 
