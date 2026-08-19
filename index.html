@@ -5139,7 +5139,14 @@
   <div class="destination-detail" id="detail-rio-xingu">
 
     <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <div class="detail-hero detail-hero-slider" id="rio-xingu-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-xingu-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-xingu-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-xingu-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-xingu-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-xingu-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -5152,6 +5159,15 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-xingu-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-xingu-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-xingu-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-xingu-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-xingu-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-xingu-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-xingu-hero-slider', 4)"></button>
       </div>
     </div>
 
