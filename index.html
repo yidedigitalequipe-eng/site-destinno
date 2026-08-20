@@ -1425,7 +1425,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
-      align-items: center;
+      align-items: start;
     }
 
     .detail-giants-text h2 {
@@ -1442,15 +1442,37 @@
       border-left: 3px solid var(--color-orange);
       padding-left: 20px;
       font-style: italic;
+      margin-bottom: 35px;
+    }
+
+    .giants-species-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .detail-giants-photo {
+      display: flex;
+      flex-direction: column;
     }
 
     .detail-giants-img {
-      border-radius: var(--radius);
+      border-radius: var(--radius) var(--radius) 0 0;
       overflow: hidden;
-      min-height: 350px;
+      min-height: 400px;
       background-size: cover;
       background-position: center;
       background-color: #2c5a3f;
+    }
+
+    .giants-photo-caption {
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 0 0 var(--radius) var(--radius);
+      text-align: center;
     }
 
     /* Seção espécies */
@@ -2003,10 +2025,6 @@
       .detail-features-grid { grid-template-columns: repeat(2, 1fr); }
       .detail-giants .container { grid-template-columns: 1fr; }
       .detail-giants-img { min-height: 300px; }
-      .detail-species .container { grid-template-columns: 1fr; }
-      .detail-species-gallery { min-height: 350px; }
-      .species-gallery-slider { min-height: 350px; }
-      .species-gallery-slide { min-height: 350px; }
       .detail-package .container { grid-template-columns: 1fr; }
       .detail-info .container { grid-template-columns: 1fr; }
       .season-legend { justify-content: flex-start; }
@@ -2403,11 +2421,6 @@
       .detail-giants { padding: 50px 0; }
       .detail-giants-text h2 { font-size: 1.8rem; }
       .detail-giants-img { min-height: 250px; }
-
-      .detail-species { padding: 50px 0; }
-      .detail-species-gallery { min-height: 280px; }
-      .species-gallery-slider { min-height: 280px; }
-      .species-gallery-slide { min-height: 280px; }
 
       .detail-package { padding: 50px 0; }
       .detail-info { padding: 50px 0; }
@@ -3063,58 +3076,36 @@
         <div class="detail-giants-text">
           <h2>Os gigantes da Amazônia esperam por você.</h2>
           <p class="giants-quote">"O Rio Teles Pires é um dos maiores santuários da pesca esportiva no mundo e um verdadeiro berço dos Gigantes da Amazônia."</p>
-        </div>
-        <div class="detail-giants-img" style="background-image: url('images/detail-teles-pires-giants.jpg');"></div>
-      </div>
-    </div>
 
-    <!-- Espécies e galeria -->
-    <div class="detail-species">
-      <div class="container">
-        <div class="detail-species-list">
-          <div class="species-item">
-            <div class="species-icon"><i class="fas fa-compact-disc"></i></div>
-            <div>
-              <h3>Os Gigantes de Couro</h3>
-              <p>Enfrente a força brutal de espécies como Piraíba, Pirarara, Jaú, entre outros monstros do fundo do rio.</p>
+          <div class="giants-species-list">
+            <div class="species-item">
+              <div class="species-icon"><i class="fas fa-compact-disc"></i></div>
+              <div>
+                <h3>Os Gigantes de Couro</h3>
+                <p>Enfrente a força brutal de espécies como Piraíba, Pirarara, Jaú, entre outros monstros do fundo do rio.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="species-item">
-            <div class="species-icon"><i class="fas fa-bullseye"></i></div>
-            <div>
-              <h3>Pescaria de Arremesso</h3>
-              <p>Ação garantida na superfície com Tucunaré, Bicuda e Cachorra em extrema abundância.</p>
+            <div class="species-item">
+              <div class="species-icon"><i class="fas fa-bullseye"></i></div>
+              <div>
+                <h3>Pescaria de Arremesso</h3>
+                <p>Ação garantida na superfície com Tucunaré, Bicuda e Cachorra em extrema abundância.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="species-item">
-            <div class="species-icon"><i class="fas fa-plus"></i></div>
-            <div>
-              <h3>E outras espécies que acompanham</h3>
-              <p>Uma biodiversidade incrível aguarda suas iscas: Jundiá, Cachara, Barbado, Palmito, Tambaqui, Matrinxã, Corvina e Pacu.</p>
+            <div class="species-item">
+              <div class="species-icon"><i class="fas fa-plus"></i></div>
+              <div>
+                <h3>E outras espécies que acompanham</h3>
+                <p>Uma biodiversidade incrível aguarda suas iscas: Jundiá, Cachara, Barbado, Palmito, Tambaqui, Matrinxã, Corvina e Pacu.</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="detail-species-gallery">
-          <div class="species-gallery-slider" id="speciesSlider">
-            <div class="species-gallery-slide" style="background-image: url('images/species-teles-pires-1.jpg');">
-              <div class="slide-caption">Troféus inesquecíveis pescados no Teles Pires</div>
-            </div>
-            <div class="species-gallery-slide" style="background-image: url('images/species-teles-pires-2.jpg');">
-              <div class="slide-caption">Os gigantes de couro do Rio Teles Pires</div>
-            </div>
-            <div class="species-gallery-slide" style="background-image: url('images/species-teles-pires-3.jpg');">
-              <div class="slide-caption">Pescaria de arremesso com ação garantida</div>
-            </div>
-          </div>
-          <button class="species-gallery-arrow prev" onclick="moveSpeciesSlider(-1)" aria-label="Foto anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="species-gallery-arrow next" onclick="moveSpeciesSlider(1)" aria-label="Próxima foto">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+        <div class="detail-giants-photo">
+          <div class="detail-giants-img" style="background-image: url('images/detail-teles-pires-giants.jpg');"></div>
+          <p class="giants-photo-caption">Troféus inesquecíveis pescados no Teles Pires</p>
         </div>
       </div>
     </div>
@@ -5722,9 +5713,6 @@
     /* ---- Species gallery slider (genérico) ---- */
     const sliderIndexes = {};
 
-    function moveSpeciesSlider(direction) {
-      moveSlider('speciesSlider', direction);
-    }
 
     function moveSlider(sliderId, direction) {
       const slider = document.getElementById(sliderId);
