@@ -1475,6 +1475,57 @@
       text-align: center;
     }
 
+    .detail-giants-photo {
+      position: relative;
+    }
+
+    .giants-gallery {
+      position: relative;
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .giants-gallery-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-color: #2c5a3f;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .giants-gallery-slide.active {
+      opacity: 1;
+    }
+
+    .giants-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 3;
+      transition: background var(--transition);
+    }
+
+    .giants-gallery-arrow:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    .giants-gallery-arrow.prev { left: 10px; }
+    .giants-gallery-arrow.next { right: 10px; }
+
     /* Seção espécies */
     .detail-species {
       padding: 80px 0;
@@ -3104,7 +3155,13 @@
           </div>
         </div>
         <div class="detail-giants-photo">
-          <div class="detail-giants-img" style="background-image: url('images/detail-teles-pires-giants.jpg');"></div>
+          <div class="giants-gallery" id="giantsSliderTelesPires">
+            <div class="giants-gallery-slide active" style="background-image: url('images/teles-pires-giants-1.jpg');"></div>
+            <div class="giants-gallery-slide" style="background-image: url('images/teles-pires-giants-2.jpg');"></div>
+            <div class="giants-gallery-slide" style="background-image: url('images/teles-pires-giants-3.jpg');"></div>
+          </div>
+          <button class="giants-gallery-arrow prev" onclick="moveGiantsSlider('giantsSliderTelesPires', -1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="giants-gallery-arrow next" onclick="moveGiantsSlider('giantsSliderTelesPires', 1)"><i class="fas fa-chevron-right"></i></button>
           <p class="giants-photo-caption">Troféus inesquecíveis pescados no Teles Pires</p>
         </div>
       </div>
@@ -5763,6 +5820,20 @@
       if (sliderIndexes[sliderId] < 0) sliderIndexes[sliderId] = total - 1;
       if (sliderIndexes[sliderId] >= total) sliderIndexes[sliderId] = 0;
       slider.style.transform = 'translateX(-' + (sliderIndexes[sliderId] * 100) + '%)';
+    }
+
+    function moveGiantsSlider(sliderId, direction) {
+      const container = document.getElementById(sliderId);
+      if (!container) return;
+      const slides = container.querySelectorAll('.giants-gallery-slide');
+      if (!slides.length) return;
+      let current = 0;
+      slides.forEach(function(s, i) { if (s.classList.contains('active')) current = i; });
+      slides[current].classList.remove('active');
+      current += direction;
+      if (current < 0) current = slides.length - 1;
+      if (current >= slides.length) current = 0;
+      slides[current].classList.add('active');
     }
 
     /* ---- Carrossel de depoimentos genérico ---- */
