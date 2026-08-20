@@ -3834,7 +3834,14 @@
   <div class="destination-detail" id="detail-rio-acari">
 
     <!-- Hero -->
-    <div class="detail-hero" style="background-image: url('images/detail-acari-hero.jpg');">
+    <div class="detail-hero detail-hero-slider" id="rio-acari-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-acari-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-acari-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-acari-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-acari-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-acari-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -3842,11 +3849,20 @@
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
         <h1>Rio Acari</h1>
         <span class="detail-location">Amazonas</span>
-        <p class="detail-subtitle">Uma expedição para quem busca uma pescaria de múltiplas espécies na amazônica.</p>
+        <p class="detail-subtitle">Uma expedição para quem busca uma pescaria de múltiplas espécies na Amazônia.</p>
         <a href="https://wa.me/5511914489090?text=Ol%C3%A1!%20Tenho%20interesse%20no%20roteiro%20Rio%20Acari." class="btn-specialist" target="_blank" rel="noopener">
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-acari-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-acari-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-acari-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-acari-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-acari-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-acari-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-acari-hero-slider', 4)"></button>
       </div>
     </div>
 
