@@ -5366,7 +5366,14 @@
   <div class="destination-detail" id="detail-rio-sucunduri">
 
     <!-- Hero -->
-    <div class="detail-hero" style="background-color: var(--color-primary-dark);">
+    <div class="detail-hero detail-hero-slider" id="rio-sucunduri-hero-slider">
+      <div class="detail-hero-slides">
+        <div class="detail-hero-slide active" style="background-image: url('images/rio-sucunduri-1.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-sucunduri-2.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-sucunduri-3.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-sucunduri-4.jpg');"></div>
+        <div class="detail-hero-slide" style="background-image: url('images/rio-sucunduri-5.jpg');"></div>
+      </div>
       <button class="detail-back" onclick="closeDetail()">
         <i class="fas fa-arrow-left"></i> Voltar aos roteiros
       </button>
@@ -5379,6 +5386,15 @@
           <i class="fab fa-whatsapp"></i>
           Fale com um Especialista Agora
         </a>
+      </div>
+      <button class="detail-hero-arrow prev" onclick="detailHeroSlide('rio-sucunduri-hero-slider', -1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="detail-hero-arrow next" onclick="detailHeroSlide('rio-sucunduri-hero-slider', 1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="detail-hero-dots">
+        <button class="detail-hero-dot active" onclick="detailHeroGoTo('rio-sucunduri-hero-slider', 0)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-sucunduri-hero-slider', 1)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-sucunduri-hero-slider', 2)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-sucunduri-hero-slider', 3)"></button>
+        <button class="detail-hero-dot" onclick="detailHeroGoTo('rio-sucunduri-hero-slider', 4)"></button>
       </div>
     </div>
 
