@@ -1032,24 +1032,29 @@
     .detail-back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 25px;
-      background: rgba(255,255,255,0.15);
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: white;
       border-radius: 50px;
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       font-weight: 500;
+      letter-spacing: 0.3px;
       cursor: pointer;
       transition: background var(--transition);
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
       position: absolute;
       top: 20px;
       left: 20px;
       z-index: 5;
+      text-decoration: none;
     }
 
     .detail-back:hover {
-      background: rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.5);
     }
 
     /* Botão fixo de voltar */
@@ -1156,7 +1161,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(20,45,59,0.55), rgba(27,58,75,0.35));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.4) 100%);
     }
     .detail-hero-slider .detail-hero-content {
       position: relative;
@@ -1177,25 +1182,27 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 3;
-      background: rgba(255,255,255,0.2);
-      border: 2px solid rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
       color: white;
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      font-size: 1.2rem;
+      font-size: 1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s, border-color 0.3s;
+      transition: background 0.3s, transform 0.3s;
     }
     .detail-hero-arrow:hover {
-      background: rgba(255,255,255,0.35);
-      border-color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.45);
+      transform: translateY(-50%) scale(1.08);
     }
-    .detail-hero-arrow.prev { left: 20px; }
-    .detail-hero-arrow.next { right: 20px; }
+    .detail-hero-arrow.prev { left: 18px; }
+    .detail-hero-arrow.next { right: 18px; }
     .detail-hero-dots {
       position: absolute;
       bottom: 25px;
@@ -1203,22 +1210,22 @@
       transform: translateX(-50%);
       z-index: 3;
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     .detail-hero-dot {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-      border: 2px solid rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.35);
+      border: none;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background 0.3s, width 0.3s;
       padding: 0;
     }
     .detail-hero-dot.active {
-      background: var(--color-gold);
-      border-color: var(--color-gold);
-      transform: scale(1.2);
+      background: rgba(255,255,255,0.9);
+      width: 22px;
+      border-radius: 4px;
     }
 
     .detail-hero-content {
@@ -1232,40 +1239,43 @@
 
     .detail-hero-label {
       display: inline-block;
-      background: var(--color-gold);
-      color: var(--color-primary-dark);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 6px 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 5px 14px;
       border-radius: 50px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .detail-hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 700;
       color: var(--color-text-light);
-      margin-bottom: 10px;
-      line-height: 1.2;
+      margin-bottom: 8px;
+      line-height: 1.15;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
 
     .detail-hero-content .detail-location {
       display: block;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
       font-weight: 400;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
+      margin-bottom: 18px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
     .detail-hero-content .detail-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 30px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
       font-weight: 300;
+      max-width: 550px;
     }
 
     .btn-specialist {
@@ -2444,11 +2454,11 @@
       .detail-hero-slider .detail-hero-content { min-height: 60vh; padding: 80px 15px 70px; }
       .detail-hero-content h1 { font-size: 1.8rem; }
       .detail-hero-content .detail-subtitle { font-size: 1rem; }
-      .detail-back { top: 10px; left: 10px; padding: 8px 18px; font-size: 0.85rem; }
+      .detail-back { top: 12px; left: 12px; padding: 8px 14px; font-size: 0.78rem; }
       .detail-back-fixed { top: calc(var(--header-height) + 10px); left: 15px; padding: 7px; gap: 0; border-radius: 50%; }
       .detail-back-fixed .back-icon { width: 30px; height: 30px; font-size: 0.7rem; }
       .detail-back-fixed .back-text { display: none; }
-      .detail-hero-arrow { width: 38px; height: 38px; font-size: 1rem; }
+      .detail-hero-arrow { width: 36px; height: 36px; font-size: 0.9rem; }
       .detail-hero-arrow.prev { left: 10px; }
       .detail-hero-arrow.next { right: 10px; }
       .detail-hero-dots { bottom: 15px; gap: 8px; }
@@ -3035,7 +3045,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/teles-pires-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -3469,7 +3479,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-araguaia-5.png'); background-position: center 40%;"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -3865,7 +3875,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-acari-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -4285,7 +4295,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-cuiaba-4.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -4623,7 +4633,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-roosevelt-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -4982,7 +4992,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-branco-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -5315,7 +5325,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-anaua-6.jpg'); background-position: center 30%;"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -5651,7 +5661,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-xingu-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
@@ -5997,7 +6007,7 @@
         <div class="detail-hero-slide" style="background-image: url('images/rio-sucunduri-5.jpg');"></div>
       </div>
       <button class="detail-back" onclick="closeDetail()">
-        <i class="fas fa-arrow-left"></i> Voltar aos roteiros
+        <i class="fas fa-arrow-left"></i> VOLTAR
       </button>
       <div class="detail-hero-content">
         <span class="detail-hero-label">DESTINO EXCLUSIVO</span>
