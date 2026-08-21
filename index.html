@@ -1057,60 +1057,6 @@
       background: rgba(0,0,0,0.5);
     }
 
-    /* Botão fixo de voltar */
-    .detail-back-fixed {
-      position: fixed;
-      top: calc(var(--header-height) + 15px);
-      left: 25px;
-      z-index: 999;
-      display: none;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: var(--color-primary-dark);
-      border: 1px solid rgba(0,77,64,0.15);
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      font-family: var(--font-primary);
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    .detail-back-fixed .back-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--color-primary-dark);
-      color: white;
-      font-size: 0.75rem;
-      transition: transform 0.3s ease;
-    }
-    .detail-back-fixed .back-text {
-      text-transform: uppercase;
-    }
-    .detail-back-fixed.visible {
-      display: flex;
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .detail-back-fixed:hover {
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 6px 25px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);
-      transform: translateX(0) scale(1.02);
-    }
-    .detail-back-fixed:hover .back-icon {
-      transform: translateX(-2px);
-    }
 
     /* Hero do destino */
     .detail-hero {
@@ -2457,9 +2403,6 @@
       .detail-hero-content .detail-location { font-size: 0.72rem; margin-bottom: 12px; }
       .detail-hero-label { font-size: 0.6rem; padding: 4px 10px; margin-bottom: 12px; }
       .detail-back { top: 12px; left: 12px; padding: 7px 12px; font-size: 0.72rem; gap: 4px; }
-      .detail-back-fixed { top: calc(var(--header-height) + 10px); left: 15px; padding: 7px; gap: 0; border-radius: 50%; }
-      .detail-back-fixed .back-icon { width: 30px; height: 30px; font-size: 0.7rem; }
-      .detail-back-fixed .back-text { display: none; }
       .detail-hero-arrow { width: 32px; height: 32px; font-size: 0.8rem; }
       .detail-hero-arrow.prev { left: 8px; }
       .detail-hero-arrow.next { right: 8px; }
@@ -6354,12 +6297,6 @@
 
   </div><!-- fim detail-rio-sucunduri -->
 
-  <!-- Botão fixo de voltar (aparece nas páginas de detalhe) -->
-  <button class="detail-back-fixed" id="detailBackFixed" onclick="closeDetail()">
-    <span class="back-icon"><i class="fas fa-arrow-left"></i></span>
-    <span class="back-text">Voltar</span>
-  </button>
-
   <!-- ====================================================================
        BOTÃO FLUTUANTE WHATSAPP
        ==================================================================== -->
@@ -6501,9 +6438,6 @@
       detail.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      var backBtn = document.getElementById('detailBackFixed');
-      if (backBtn) backBtn.classList.add('visible');
-
       var sliders = detail.querySelectorAll('.detail-hero-slider');
       sliders.forEach(function(slider) {
         var id = slider.id;
@@ -6517,9 +6451,6 @@
 
       details.forEach(d => d.classList.remove('active'));
       mainContent.classList.remove('hidden');
-
-      var backBtn = document.getElementById('detailBackFixed');
-      if (backBtn) backBtn.classList.remove('visible');
 
       Object.keys(detailHeroTimers).forEach(function(id) {
         clearInterval(detailHeroTimers[id]);
