@@ -6564,18 +6564,67 @@
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
 
+    var searchDestinos = [
+      { keywords: ['teles pires', 'teles-pires', 'telespires', 'rio teles'], id: 'teles-pires' },
+      { keywords: ['cuiaba', 'cuiabá', 'rio cuiaba', 'rio cuiabá'], id: 'rio-cuiaba' },
+      { keywords: ['roosevelt', 'rio roosevelt'], id: 'rio-roosevelt' },
+      { keywords: ['rio branco', 'baixo rio branco', 'baixo branco'], id: 'baixo-rio-branco' },
+      { keywords: ['anaua', 'anauá', 'rio anaua', 'rio anauá'], id: 'rio-anaua' },
+      { keywords: ['xingu', 'rio xingu'], id: 'rio-xingu' },
+      { keywords: ['sucunduri', 'rio sucunduri'], id: 'rio-sucunduri' },
+      { keywords: ['acari', 'rio acari'], id: 'rio-acari' },
+      { keywords: ['araguaia', 'baixo araguaia'], id: 'baixo-araguaia' },
+      { keywords: ['contato', 'contatos', 'telefone', 'whatsapp', 'email'], id: null, section: '#contato' },
+      { keywords: ['quem somos', 'sobre', 'empresa', 'sobre nos'], id: null, section: '#quem-somos' },
+      { keywords: ['loja', 'loja virtual', 'produtos', 'comprar'], id: null, section: '#loja-virtual' },
+      { keywords: ['roteiro', 'roteiros', 'destino', 'destinos', 'pesca'], id: null, section: '#roteiros' },
+    ];
+
     function handleSearch() {
-      const query = searchInput.value.trim().toLowerCase();
+      var query = searchInput.value.trim().toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '');
       if (!query) return;
 
-      closeDetail();
+      var found = null;
+      for (var i = 0; i < searchDestinos.length; i++) {
+        var destino = searchDestinos[i];
+        for (var j = 0; j < destino.keywords.length; j++) {
+          var kw = destino.keywords[j].normalize('NFD').replace(/[̀-ͯ]/g, '');
+          if (query.indexOf(kw) !== -1 || kw.indexOf(query) !== -1) {
+            found = destino;
+            break;
+          }
+        }
+        if (found) break;
+      }
 
-      setTimeout(() => {
-        const sections = document.querySelectorAll('#mainContent section, #mainContent footer');
-        for (const section of sections) {
-          if (section.textContent.toLowerCase().includes(query)) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const top = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      if (found && found.id) {
+        searchInput.value = '';
+        openDetail(found.id);
+        return;
+      }
+
+      if (found && found.section) {
+        searchInput.value = '';
+        closeDetail();
+        setTimeout(function() {
+          var target = document.querySelector(found.section);
+          if (target) {
+            var headerHeight = document.querySelector('.header').offsetHeight;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }, 100);
+        return;
+      }
+
+      closeDetail();
+      setTimeout(function() {
+        var sections = document.querySelectorAll('#mainContent section, #mainContent footer');
+        for (var k = 0; k < sections.length; k++) {
+          if (sections[k].textContent.toLowerCase().includes(query)) {
+            var headerHeight = document.querySelector('.header').offsetHeight;
+            var top = sections[k].getBoundingClientRect().top + window.pageYOffset - headerHeight;
             window.scrollTo({ top: top, behavior: 'smooth' });
             searchInput.value = '';
             break;
