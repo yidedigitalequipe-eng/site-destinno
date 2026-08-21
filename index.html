@@ -91,29 +91,20 @@
       box-shadow: 0 2px 10px var(--color-shadow);
     }
 
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 40px;
-      border-bottom: 1px solid var(--color-border);
+    .cadastur-badge {
+      position: absolute;
+      top: 10px;
+      right: 40px;
+      z-index: 10;
     }
 
-    .header-top .cadastur-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .header-top .cadastur-badge img {
-      height: 28px;
+    .cadastur-badge img {
+      height: 22px;
       width: auto;
     }
 
     .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      display: none;
     }
 
     .lang-btn {
@@ -2311,9 +2302,7 @@
         --header-height: 100px;
       }
 
-      .header-top { padding: 5px 15px; }
-      .header-top .cadastur-badge { display: none; }
-      .header-top .lang-switch { display: none; }
+      .cadastur-badge { display: none; }
 
       .nav-lang-mobile {
         display: flex;
@@ -2480,20 +2469,10 @@
        HEADER
        ==================================================================== -->
   <header class="header" id="inicio">
-    <div class="header-top">
-      <div class="cadastur-badge">
-        <img src="images/cadastur-logo.png" alt="Cadastur">
-      </div>
-      <div class="lang-switch">
-        <button class="lang-btn active" onclick="switchLang('pt')" title="Português" aria-label="Português">
-          <svg width="28" height="19" viewBox="0 0 28 20"><rect width="28" height="20" rx="2" fill="#009c3b"/><polygon points="14,2 26,10 14,18 2,10" fill="#ffdf00"/><circle cx="14" cy="10" r="4.5" fill="#002776"/><path d="M9.5,10 Q14,7 18.5,10" stroke="#fff" stroke-width="0.7" fill="none"/></svg>
-        </button>
-        <button class="lang-btn" onclick="switchLang('en')" title="English" aria-label="English">
-          <svg width="28" height="19" viewBox="0 0 60 40"><rect width="60" height="40" fill="#002868"/><rect y="3.08" width="60" height="3.08" fill="#fff"/><rect y="6.15" width="60" height="3.08" fill="#BF0A30"/><rect y="9.23" width="60" height="3.08" fill="#fff"/><rect y="12.31" width="60" height="3.08" fill="#BF0A30"/><rect y="15.38" width="60" height="3.08" fill="#fff"/><rect y="18.46" width="60" height="3.08" fill="#BF0A30"/><rect y="21.54" width="60" height="3.08" fill="#fff"/><rect y="24.62" width="60" height="3.08" fill="#BF0A30"/><rect y="27.69" width="60" height="3.08" fill="#fff"/><rect y="30.77" width="60" height="3.08" fill="#BF0A30"/><rect y="33.85" width="60" height="3.08" fill="#fff"/><rect y="36.92" width="60" height="3.08" fill="#BF0A30"/><rect width="24" height="21.54" fill="#002868"/></svg>
-        </button>
-      </div>
-      <div id="google_translate_element"></div>
+    <div class="cadastur-badge">
+      <img src="images/cadastur-logo.png" alt="Cadastur">
     </div>
+    <div id="google_translate_element"></div>
 
     <div class="header-main">
       <a href="#inicio" class="logo" onclick="closeDetail()">
