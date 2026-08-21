@@ -2361,16 +2361,16 @@
         width: 100%;
         background: var(--color-bg-white);
         flex-direction: column;
+        align-self: auto;
         gap: 0;
         box-shadow: 0 5px 15px var(--color-shadow);
-        transform: translateY(-120%);
-        transition: transform var(--transition);
+        display: none;
         z-index: 999;
-        overflow: hidden;
+        margin-bottom: 0;
       }
 
       .nav.active {
-        transform: translateY(0);
+        display: flex;
       }
 
       .nav.active .nav-lang-mobile {
