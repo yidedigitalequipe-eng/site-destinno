@@ -39,7 +39,7 @@
       --font-primary: 'Poppins', sans-serif;
       --font-script: 'Dancing Script', cursive;
 
-      --header-height: 180px;
+      --header-height: 240px;
       --max-width: 1200px;
       --radius: 8px;
       --transition: 0.3s ease;
@@ -167,7 +167,7 @@
     }
 
     .logo img {
-      height: 150px;
+      height: 190px;
       width: auto;
     }
 
@@ -275,7 +275,7 @@
     .hero {
       margin-top: var(--header-height);
       position: relative;
-      height: calc(100vh - var(--header-height));
+      height: 100vh;
       overflow: hidden;
     }
 
@@ -2025,14 +2025,14 @@
        ========================================================================== */
     @media (max-width: 992px) {
       :root {
-        --header-height: 150px;
+        --header-height: 190px;
       }
 
       .header-main {
         padding: 10px 20px 10px;
       }
 
-      .logo img { height: 110px; }
+      .logo img { height: 140px; }
 
       .nav { gap: 10px; }
       .nav a { font-size: 0.72rem; }
@@ -2040,7 +2040,7 @@
       .search-bar { max-width: 280px; margin: 0 15px; }
       .search-bar input { width: 100%; }
 
-      .hero { height: calc(100vh - var(--header-height)); }
+      .hero { height: 100vh; }
       .hero-slide-content h1 { font-size: 2.2rem; }
 
       .about .container { flex-direction: column; gap: 30px; }
@@ -2400,7 +2400,7 @@
         transform: rotate(-45deg) translate(6px, -6px);
       }
 
-      .hero { height: calc(100vh - var(--header-height)); }
+      .hero { height: 100vh; }
       .hero-slide-content h1 { font-size: 1.8rem; }
       .hero-slide-content p { font-size: 0.95rem; }
       .hero-arrow { width: 35px; height: 35px; font-size: 1.1rem; }
