@@ -2307,7 +2307,7 @@
       .cadastur-badge { display: none; }
 
       .nav-lang-mobile {
-        display: flex;
+        display: none;
         align-items: center;
         gap: 12px;
         padding: 15px 20px;
@@ -2371,6 +2371,10 @@
 
       .nav.active {
         transform: translateY(0);
+      }
+
+      .nav.active .nav-lang-mobile {
+        display: flex;
       }
 
       .nav a {
