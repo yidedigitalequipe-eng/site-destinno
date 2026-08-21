@@ -293,7 +293,7 @@
     .hero {
       margin-top: var(--header-height);
       position: relative;
-      height: 85vh;
+      height: calc(100vh - var(--header-height));
       overflow: hidden;
     }
 
@@ -2057,7 +2057,7 @@
 
       .search-bar input { width: 120px; }
 
-      .hero { height: 70vh; }
+      .hero { height: calc(100vh - var(--header-height)); }
       .hero-slide-content h1 { font-size: 2.2rem; }
 
       .about .container { flex-direction: column; gap: 30px; }
@@ -2416,7 +2416,7 @@
         transform: rotate(-45deg) translate(6px, -6px);
       }
 
-      .hero { height: 60vh; }
+      .hero { height: calc(100vh - var(--header-height)); }
       .hero-slide-content h1 { font-size: 1.8rem; }
       .hero-slide-content p { font-size: 0.95rem; }
       .hero-arrow { width: 35px; height: 35px; font-size: 1.1rem; }
