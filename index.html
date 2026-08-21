@@ -86,13 +86,8 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: transparent;
+      background: var(--color-bg-white);
       z-index: 1000;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .header.scrolled {
-      background: rgba(255, 255, 255, 0.97);
       box-shadow: 0 2px 10px var(--color-shadow);
     }
 
@@ -113,15 +108,8 @@
     .header-top .cadastur-text {
       font-size: 0.85rem;
       font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.5px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .header.scrolled .cadastur-text {
       color: var(--color-primary);
-      text-shadow: none;
+      letter-spacing: 0.5px;
     }
 
     .header-top .flags {
@@ -205,12 +193,6 @@
     .logo img {
       height: 110px;
       width: auto;
-      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.4));
-      transition: filter 0.3s ease;
-    }
-
-    .header.scrolled .logo img {
-      filter: none;
     }
 
     .nav {
@@ -222,15 +204,9 @@
     .nav a {
       font-size: 1rem;
       font-weight: 500;
-      color: #fff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .header.scrolled .nav a {
       color: var(--color-primary);
-      text-shadow: none;
+      transition: color var(--transition);
+      position: relative;
     }
 
     .nav a::after {
@@ -240,12 +216,8 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #fff;
-      transition: width var(--transition), background 0.3s ease;
-    }
-
-    .header.scrolled .nav a::after {
       background: var(--color-primary);
+      transition: width var(--transition);
     }
 
     .nav a:hover::after {
@@ -267,32 +239,23 @@
     .menu-toggle span {
       width: 28px;
       height: 3px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s ease;
-    }
-
-    .header.scrolled .menu-toggle span {
       background: var(--color-primary);
+      border-radius: 2px;
+      transition: var(--transition);
     }
 
     .search-bar {
       display: flex;
       align-items: center;
-      background: rgba(255,255,255,0.2);
+      background: var(--color-bg-light);
       border-radius: 50px;
       padding: 8px 20px;
       gap: 8px;
-      border: 1px solid rgba(255,255,255,0.4);
+      border: 1px solid var(--color-border);
       flex: 1;
       max-width: 400px;
       margin: 0 30px;
-      transition: border-color var(--transition), box-shadow var(--transition), background 0.3s ease;
-    }
-
-    .header.scrolled .search-bar {
-      background: var(--color-bg-light);
-      border-color: var(--color-border);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
 
     .search-bar:focus-within {
@@ -305,35 +268,22 @@
       background: transparent;
       font-family: var(--font-primary);
       font-size: 0.85rem;
-      color: #fff;
+      color: var(--color-text-dark);
       outline: none;
       width: 100%;
-      transition: color 0.3s ease;
-    }
-
-    .header.scrolled .search-bar input {
-      color: var(--color-text-dark);
     }
 
     .search-bar input::placeholder {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .header.scrolled .search-bar input::placeholder {
       color: var(--color-text-muted);
     }
 
     .search-bar button {
       background: none;
-      color: #fff;
+      color: var(--color-primary);
       font-size: 0.9rem;
       padding: 0;
       display: flex;
       align-items: center;
-    }
-
-    .header.scrolled .search-bar button {
-      color: var(--color-primary);
     }
 
     .search-bar button:hover {
@@ -344,9 +294,9 @@
        4. HERO / SLIDER
        ========================================================================== */
     .hero {
-      margin-top: 0;
+      margin-top: var(--header-height);
       position: relative;
-      height: 100vh;
+      height: calc(100vh - var(--header-height));
       overflow: hidden;
     }
 
@@ -2111,7 +2061,7 @@
       .search-bar { max-width: 280px; margin: 0 15px; }
       .search-bar input { width: 100%; }
 
-      .hero { height: 100vh; }
+      .hero { height: calc(100vh - var(--header-height)); }
       .hero-slide-content h1 { font-size: 2.2rem; }
 
       .about .container { flex-direction: column; gap: 30px; }
@@ -2453,8 +2403,6 @@
         padding: 15px 20px;
         border-bottom: 1px solid var(--color-border);
         font-size: 1rem;
-        color: var(--color-primary) !important;
-        text-shadow: none !important;
       }
 
       .nav a::after { display: none; }
@@ -2473,7 +2421,7 @@
         transform: rotate(-45deg) translate(6px, -6px);
       }
 
-      .hero { height: 100vh; }
+      .hero { height: calc(100vh - var(--header-height)); }
       .hero-slide-content h1 { font-size: 1.8rem; }
       .hero-slide-content p { font-size: 0.95rem; }
       .hero-arrow { width: 35px; height: 35px; font-size: 1.1rem; }
@@ -6441,16 +6389,6 @@
        JAVASCRIPT
        ==================================================================== -->
   <script>
-    /* ---- Header scroll state ---- */
-    const header = document.querySelector('.header');
-    document.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
     /* ---- Menu Mobile ---- */
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav');
@@ -6579,7 +6517,6 @@
 
       mainContent.classList.add('hidden');
       detail.classList.add('active');
-      header.classList.add('scrolled');
       window.scrollTo({ top: 0, behavior: 'instant' });
 
       var backBtn = document.getElementById('detailBackFixed');
